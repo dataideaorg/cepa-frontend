@@ -57,7 +57,7 @@ const Navbar = () => {
       href: '/get-involved',
       dropdown: [
         { label: 'Careers & Internships', href: '/get-involved/career' },
-        { label: 'Fellowships', href: '/get-involved/fellowship' },
+        { label: 'Fellowships', href: '/get-involved/fellowships' },
         { label: 'Announcements', href: '/get-involved/announcements' },
         { label: 'Contact Us', href: '/get-involved/contact' },
         { label: 'Donate', href: '/get-involved/donate' },

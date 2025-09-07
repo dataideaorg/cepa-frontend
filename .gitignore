@@ -1,5 +1,6 @@
 .plan/
 old/
+screenshots/
 
 # dependencies
 /node_modules

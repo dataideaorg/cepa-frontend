@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Briefcase, Mail, Heart, ArrowRight } from "lucide-react";
+import { Users, Briefcase, Mail, Heart, ArrowRight, Bell } from "lucide-react";
 
 export default function GetInvolvedPage() {
   return (
@@ -43,7 +43,7 @@ export default function GetInvolvedPage() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-md transition-colors duration-200"
+                  className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-900 border border-yellow-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
                 >
                   Explore Opportunities
                 </Button>
@@ -51,8 +51,7 @@ export default function GetInvolvedPage() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="border-blue-600 text-blue-600 hover:bg-blue-50 font-medium px-8 py-3 rounded-md transition-colors duration-200"
+                  className="bg-green-500/20 hover:bg-green-500/30 text-green-900 border border-green-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
                 >
                   Learn More
                 </Button>
@@ -81,7 +80,7 @@ export default function GetInvolvedPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6"
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -115,14 +114,16 @@ export default function GetInvolvedPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Volunteer</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Fellowships</h3>
                   <p className="text-gray-600 mb-6">
-                    Contribute your skills and time to support our research and advocacy initiatives.
+                    Join our fellowship programs and work with leading experts on governance and policy research.
                   </p>
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
-                    Get Started
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  <Link href="/get-involved/fellowships">
+                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      View Programs
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
@@ -134,16 +135,18 @@ export default function GetInvolvedPage() {
               <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
                 <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Heart className="w-8 h-8 text-yellow-600" />
+                    <Users className="w-8 h-8 text-yellow-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Donate</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Membership</h3>
                   <p className="text-gray-600 mb-6">
-                    Support our mission with a financial contribution to help fund our research and programs.
+                    Join our community of governance professionals and get access to exclusive resources and networking opportunities.
                   </p>
-                  <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
-                    Donate Now
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
+                  <Link href="/get-involved/membership">
+                    <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      Join Now
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
@@ -164,6 +167,52 @@ export default function GetInvolvedPage() {
                   <Link href="/get-involved/contact">
                     <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
                       Get in Touch
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Bell className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Announcements</h3>
+                  <p className="text-gray-600 mb-6">
+                    Stay updated with the latest news, events, and important announcements from CEPA.
+                  </p>
+                  <Link href="/get-involved/announcements">
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      View Updates
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="w-8 h-8 text-pink-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Donate</h3>
+                  <p className="text-gray-600 mb-6">
+                    Support our mission to strengthen governance and promote democracy across Uganda and East Africa.
+                  </p>
+                  <Link href="/get-involved/donate">
+                    <Button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      Donate Now
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
