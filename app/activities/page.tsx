@@ -1,7 +1,9 @@
+"use client";
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const activities = [
   {
@@ -174,12 +176,22 @@ export default function ActivitiesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold text-white mb-8"
+            >
               Our Activities
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed"
+            >
               Explore CEPA's comprehensive range of activities advancing policy analysis, governance, and civic engagement across Uganda and East Africa.
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
@@ -188,24 +200,43 @@ export default function ActivitiesPage() {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <Badge 
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-4 mb-12"
+          >
+            {categories.map((category, index) => (
+              <motion.div
                 key={category}
-                variant={category === 'All' ? 'default' : 'secondary'}
-                className={`px-4 py-2 text-sm cursor-pointer transition-colors ${
-                  category === 'All' 
-                    ? 'bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30' 
-                    : 'bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30'
-                }`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                {category}
-              </Badge>
+                <Badge 
+                  variant={category === 'All' ? 'default' : 'secondary'}
+                  className={`px-4 py-2 text-sm cursor-pointer transition-colors ${
+                    category === 'All' 
+                      ? 'bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30' 
+                      : 'bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30'
+                  }`}
+                >
+                  {category}
+                </Badge>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Activities Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {activities.map((activity, index) => {
               const colorClasses = {
                 0: "border-primary",
@@ -216,13 +247,26 @@ export default function ActivitiesPage() {
               const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
               
               return (
-                <Card key={activity.id} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                <motion.div
+                  key={activity.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${activity.image})` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <motion.div 
+                    className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-xs">
                         {activity.category}
@@ -236,18 +280,25 @@ export default function ActivitiesPage() {
                         Read More
                       </Link>
                     </Button>
-                  </div>
+                  </motion.div>
                 </Card>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Load More Button */}
-          <div className="text-center mt-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
             <Button size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
               Load More Activities
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

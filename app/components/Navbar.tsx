@@ -56,9 +56,8 @@ const Navbar = () => {
       label: 'Get Involved',
       href: '/get-involved',
       dropdown: [
-        { label: 'Careers', href: '/get-involved/careers' },
-        { label: 'Internship', href: '/get-involved/internship' },
-        { label: 'Fellowship', href: '/get-involved/fellowship' },
+        { label: 'Careers & Internships', href: '/get-involved/career' },
+        { label: 'Fellowships', href: '/get-involved/fellowship' },
         { label: 'Announcements', href: '/get-involved/announcements' },
         { label: 'Contact Us', href: '/get-involved/contact' },
         { label: 'Donate', href: '/get-involved/donate' },
@@ -94,7 +93,7 @@ const Navbar = () => {
                         </svg>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-64">
+                    <DropdownMenuContent className="w-64 bg-white/40 border border-white/50 backdrop-blur-sm">
                       {item.dropdown.map((dropdownItem) => (
                         <DropdownMenuItem key={dropdownItem.label} asChild>
                           <Link href={dropdownItem.href}>

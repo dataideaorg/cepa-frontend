@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 
 const FocusAreas: React.FC = () => {
   const focusAreas = [
@@ -132,12 +134,22 @@ const FocusAreas: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold text-white mb-8"
+            >
               Our Focus Areas
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed"
+            >
               We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
@@ -151,59 +163,129 @@ const FocusAreas: React.FC = () => {
               const currentColor = themeColors[index % 4];
               
               return (
-                <div key={`${area.id}-details`} id={`${area.id}-details`} className="scroll-mt-20">
+                <motion.div 
+                  key={`${area.id}-details`} 
+                  id={`${area.id}-details`} 
+                  className="scroll-mt-20"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div className={index % 2 === 0 ? "order-1" : "order-2"}>
-                      <div className="mb-6">
+                    <motion.div 
+                      className={index % 2 === 0 ? "order-1" : "order-2"}
+                      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      <motion.div 
+                        className="mb-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        viewport={{ once: true }}
+                      >
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                           {area.title}
                         </h2>
-                      </div>
-                      <p className="text-lg text-muted-foreground mb-6">
+                      </motion.div>
+                      <motion.p 
+                        className="text-lg text-muted-foreground mb-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        viewport={{ once: true }}
+                      >
                         {area.description}
-                      </p>
-                      <p className="text-muted-foreground mb-8">
+                      </motion.p>
+                      <motion.p 
+                        className="text-muted-foreground mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        viewport={{ once: true }}
+                      >
                         {area.details}
-                      </p>
+                      </motion.p>
                       
-                      <div className="mb-8">
+                      <motion.div 
+                        className="mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 1.0 }}
+                        viewport={{ once: true }}
+                      >
                         <h3 className="text-xl font-semibold text-foreground mb-4">Key Activities:</h3>
                         <ul className="space-y-3">
                           {area.activities.map((activity, actIndex) => (
-                            <li key={actIndex} className="text-muted-foreground">
+                            <motion.li 
+                              key={actIndex} 
+                              className="text-muted-foreground"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 1.2 + actIndex * 0.1 }}
+                              viewport={{ once: true }}
+                            >
                               {activity}
-                            </li>
+                            </motion.li>
                           ))}
                         </ul>
-                      </div>
+                      </motion.div>
                       
-                      <Button asChild className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                        <Link href="/resources">
-                          View Related Resources
-                        </Link>
-                      </Button>
-                    </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 1.4 }}
+                        viewport={{ once: true }}
+                      >
+                        <Button asChild className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+                          <Link href="/resources">
+                            View Related Resources
+                          </Link>
+                        </Button>
+                      </motion.div>
+                    </motion.div>
                     
-                    <div className={index % 2 === 0 ? "order-2" : "order-1"}>
+                    <motion.div 
+                      className={index % 2 === 0 ? "order-2" : "order-1"}
+                      initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      viewport={{ once: true }}
+                    >
                       <Card className="relative h-80 overflow-hidden hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                         <div 
                           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                           style={{ backgroundImage: `url(${area.image})` }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <motion.div 
+                          className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.6 }}
+                          viewport={{ once: true }}
+                        >
                           <h3 className="text-xl font-bold mb-2">{area.title}</h3>
                           <p className="text-sm text-white/90 mb-4">{area.description}</p>
-                          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                          <motion.div 
+                            className="bg-white/20 backdrop-blur-sm rounded-lg p-3"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.8 }}
+                            viewport={{ once: true }}
+                          >
                             <p className="text-xs text-white font-medium">
                               Impact: Contributing to better governance and policy outcomes in Uganda
                             </p>
-                          </div>
-                        </div>
+                          </motion.div>
+                        </motion.div>
                       </Card>
-                    </div>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -213,13 +295,31 @@ const FocusAreas: React.FC = () => {
       {/* Call to Action */}
       <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
             Interested in Our Work?
-          </h2>
-          <p className="text-xl text-white/90 mb-12 max-w-4xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
+          >
             Learn more about our research, publications, and how you can get involved in advancing good governance in Uganda.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+          >
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/resources">
                 View Our Resources
@@ -230,7 +330,7 @@ const FocusAreas: React.FC = () => {
                 Get Involved
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

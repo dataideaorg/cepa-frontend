@@ -1,8 +1,10 @@
+"use client";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   return (
@@ -17,13 +19,28 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 pb-16">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+            >
               Center for Policy Analysis
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed"
+            >
               Advancing parliamentary democracy, governance, and human rights in Uganda through evidence-based policy research and analysis.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Button asChild size="lg" className="shadow-lg text-lg px-8 py-6 bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
                 <Link href="/about">
                   Learn More About Us
@@ -34,7 +51,7 @@ const Home: React.FC = () => {
                   Get Involved
                 </Link>
               </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -42,7 +59,13 @@ const Home: React.FC = () => {
       {/* Mission Statement */}
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Our Mission
             </h2>
@@ -51,56 +74,72 @@ const Home: React.FC = () => {
               and advancing human rights in Uganda through rigorous policy research, parliamentary monitoring, 
               and evidence-based advocacy.
             </p>
-          </div>
+          </motion.div>
           
           {/* Mission Flow */}
           <div className="relative">
-            {/* Simple Mission Flow */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="flex items-center space-x-8 bg-gradient-to-r from-blue-50 via-yellow-50 to-green-50 rounded-lg px-8 py-4 border border-gray-200">
-                <span className="text-lg font-medium text-primary">Research</span>
-                <span className="text-gray-400">→</span>
-                <span className="text-lg font-medium text-secondary">Monitoring</span>
-                <span className="text-gray-400">→</span>
-                <span className="text-lg font-medium text-accent">Advocacy</span>
-              </div>
-            </div>
-
             {/* Mission Cards - Compact Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">Research Excellence</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    Conducting rigorous, evidence-based research to inform policy decisions and strengthen democratic governance.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-foreground">Research Excellence</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm text-muted-foreground">
+                      Conducting rigorous, evidence-based research to inform policy decisions and strengthen democratic governance.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">Parliamentary Monitoring</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    Ensuring accountability in legislative processes through comprehensive parliamentary oversight and monitoring.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-foreground">Parliamentary Monitoring</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm text-muted-foreground">
+                      Ensuring accountability in legislative processes through comprehensive parliamentary oversight and monitoring.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">Evidence-Based Advocacy</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm text-muted-foreground">
-                    Driving meaningful policy reforms through strategic advocacy grounded in solid research and data.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-foreground">Evidence-Based Advocacy</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm text-muted-foreground">
+                      Driving meaningful policy reforms through strategic advocacy grounded in solid research and data.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -108,16 +147,28 @@ const Home: React.FC = () => {
       {/* Focus Areas */}
       <section className="py-20 bg-gradient-to-br from-blue-50 via-yellow-50 to-green-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Our Focus Areas
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {[
               {
                 title: "Parliament Watch",
@@ -164,44 +215,70 @@ const Home: React.FC = () => {
               };
               
               return (
-                <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: `url(${area.image})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">{area.title}</h3>
-                    <p className="text-sm text-white/90">{area.description}</p>
-                  </div>
-                </Card>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${area.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-xl font-bold mb-2">{area.title}</h3>
+                      <p className="text-sm text-white/90">{area.description}</p>
+                    </div>
+                  </Card>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
           
-            <div className="text-center mt-12">
-              <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                <Link href="/focus-areas">
-                  Explore All Focus Areas
-                </Link>
-              </Button>
-            </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+              <Link href="/focus-areas">
+                Explore All Focus Areas
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* Latest Updates */}
       <section className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Latest Updates
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Stay informed with our latest research, publications, and policy insights that shape Uganda's governance landscape.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {[
               {
                 title: "New Policy Brief Released",
@@ -232,42 +309,74 @@ const Home: React.FC = () => {
               };
               
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary" className="font-medium">{update.type}</Badge>
-                      <span className="text-sm text-muted-foreground font-medium">{update.date}</span>
-                    </div>
-                    <CardTitle className="text-xl text-foreground">{update.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base text-muted-foreground">{update.description}</CardDescription>
-                  </CardContent>
-                </Card>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary" className="font-medium">{update.type}</Badge>
+                        <span className="text-sm text-muted-foreground font-medium">{update.date}</span>
+                      </div>
+                      <CardTitle className="text-xl text-foreground">{update.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-base text-muted-foreground">{update.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
           
-            <div className="text-center mt-12">
-              <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                <Link href="/resources">
-                  View All Resources
-                </Link>
-              </Button>
-            </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+              <Link href="/resources">
+                View All Resources
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* Call to Action */}
       <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
             Join Us in Building a Better Uganda
-          </h2>
-          <p className="text-xl text-white/90 mb-12 max-w-4xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
+          >
             Whether through research, advocacy, or direct engagement, there are many ways to contribute to our mission of strengthening democratic governance and promoting transparency in Uganda.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+          >
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved#donate">
                 Donate Now
@@ -278,10 +387,9 @@ const Home: React.FC = () => {
                 Explore Careers
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
-
     </div>
   );
 };
