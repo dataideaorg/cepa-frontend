@@ -1,14 +1,15 @@
 import React from "react";
-import Section from "../components/Section";
-import Card from "../components/Card";
-import Button from "../components/Button";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const FocusAreas: React.FC = () => {
   const focusAreas = [
     {
       id: "parliament-watch",
       title: "Parliament Watch",
-      icon: "🏛️",
+      image: "/focus-areas/parliament-new.jpg",
       description: "Monitoring parliamentary proceedings and ensuring accountability in legislative processes.",
       details: "We track parliamentary sessions, analyze voting patterns, monitor committee activities, and assess the quality of legislative debates to ensure transparency and accountability in Uganda's parliament.",
       activities: [
@@ -16,12 +17,13 @@ const FocusAreas: React.FC = () => {
         "Analysis of voting patterns and attendance",
         "Committee oversight and reporting",
         "Legislative impact assessments"
-      ]
+      ],
+      color: "blue"
     },
     {
       id: "democracy",
       title: "Parliamentary Democracy and Governance",
-      icon: "🗳️",
+      image: "/focus-areas/democracy.jpg",
       description: "Strengthening democratic institutions and promoting good governance practices.",
       details: "We work to enhance democratic processes, improve institutional capacity, and promote participatory governance at all levels of government.",
       activities: [
@@ -29,12 +31,13 @@ const FocusAreas: React.FC = () => {
         "Electoral process monitoring",
         "Governance capacity building",
         "Citizen participation enhancement"
-      ]
+      ],
+      color: "yellow"
     },
     {
       id: "transparency",
       title: "Transparency and Accountability",
-      icon: "🔍",
+      image: "/focus-areas/transparency.jpg",
       description: "Advocating for open government and holding leaders accountable to citizens.",
       details: "We promote transparency in government operations, advocate for access to information, and work to ensure public officials are held accountable for their actions.",
       activities: [
@@ -42,12 +45,13 @@ const FocusAreas: React.FC = () => {
         "Public expenditure tracking",
         "Anti-corruption initiatives",
         "Government transparency monitoring"
-      ]
+      ],
+      color: "green"
     },
     {
       id: "human-rights",
       title: "Human Rights",
-      icon: "🤝",
+      image: "/focus-areas/human-rights.jpg",
       description: "Protecting and promoting fundamental human rights and freedoms.",
       details: "We monitor human rights violations, advocate for policy reforms, and work to ensure that all Ugandans can enjoy their fundamental rights and freedoms.",
       activities: [
@@ -55,12 +59,13 @@ const FocusAreas: React.FC = () => {
         "Policy advocacy for rights protection",
         "Legal aid and support services",
         "Rights awareness campaigns"
-      ]
+      ],
+      color: "red"
     },
     {
       id: "health",
       title: "Public Health and Road Safety",
-      icon: "🏥",
+      image: "/focus-areas/health-new.jpg",
       description: "Improving public health outcomes and road safety across Uganda.",
       details: "We conduct research on public health issues, advocate for better healthcare policies, and work to improve road safety through evidence-based interventions.",
       activities: [
@@ -68,12 +73,13 @@ const FocusAreas: React.FC = () => {
         "Healthcare system analysis",
         "Road safety advocacy",
         "Health awareness campaigns"
-      ]
+      ],
+      color: "blue"
     },
     {
       id: "climate",
       title: "Climate Justice",
-      icon: "🌱",
+      image: "/focus-areas/climate-new.jpg",
       description: "Addressing climate change impacts and promoting environmental sustainability.",
       details: "We research climate change impacts on Uganda, advocate for sustainable policies, and work with communities to build resilience against climate-related challenges.",
       activities: [
@@ -81,12 +87,13 @@ const FocusAreas: React.FC = () => {
         "Environmental policy advocacy",
         "Community resilience building",
         "Sustainable development promotion"
-      ]
+      ],
+      color: "green"
     },
     {
       id: "ai",
       title: "Artificial Intelligence (AI)",
-      icon: "🤖",
+      image: "/focus-areas/transparency.jpg",
       description: "Leveraging technology and AI for better governance and policy outcomes.",
       details: "We explore how AI and technology can improve governance, enhance service delivery, and support evidence-based policy making in Uganda.",
       activities: [
@@ -94,12 +101,13 @@ const FocusAreas: React.FC = () => {
         "Technology governance frameworks",
         "Digital rights advocacy",
         "Innovation in public service delivery"
-      ]
+      ],
+      color: "blue"
     },
     {
       id: "scrutiny",
       title: "Post Legislative Scrutiny",
-      icon: "📋",
+      image: "/focus-areas/democracy.jpg",
       description: "Assessing the effectiveness of laws and policies after implementation.",
       details: "We conduct systematic reviews of implemented policies and laws to assess their effectiveness, identify gaps, and recommend improvements for better outcomes.",
       activities: [
@@ -107,100 +115,128 @@ const FocusAreas: React.FC = () => {
         "Legislative impact assessments",
         "Implementation monitoring",
         "Policy improvement recommendations"
-      ]
+      ],
+      color: "yellow"
     }
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <Section background="blue" className="text-white">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Our Focus Areas
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
-            We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
-          </p>
+      <section className="relative h-96 overflow-hidden">
+        <img 
+          src="/hero/focus-areas-hero.jpg" 
+          alt="Our Focus Areas - CEPA"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+              Our Focus Areas
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+              We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
+            </p>
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Focus Areas Grid */}
-      <Section>
-        <div className="space-y-16">
-          {focusAreas.map((area, index) => (
-            <div key={area.id} id={area.id} className="scroll-mt-20">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className={index % 2 === 0 ? "order-1" : "order-2"}>
-                  <div className="flex items-center mb-6">
-                    <div className="text-5xl mr-4">{area.icon}</div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                      {area.title}
-                    </h2>
-                  </div>
-                  <p className="text-lg text-gray-600 mb-6">
-                    {area.description}
-                  </p>
-                  <p className="text-gray-700 mb-8">
-                    {area.details}
-                  </p>
-                  
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Activities:</h3>
-                    <ul className="space-y-2">
-                      {area.activities.map((activity, actIndex) => (
-                        <li key={actIndex} className="flex items-start">
-                          <div className="flex-shrink-0 w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                          <span className="text-gray-700">{activity}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <Button href="/resources" variant="primary">
-                    View Related Resources
-                  </Button>
-                </div>
-                
-                <div className={index % 2 === 0 ? "order-2" : "order-1"}>
-                  <Card className="p-8 h-full">
-                    <div className="text-center">
-                      <div className="text-8xl mb-6">{area.icon}</div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{area.title}</h3>
-                      <p className="text-gray-600 mb-6">{area.description}</p>
-                      <div className="bg-blue-50 rounded-lg p-4">
-                        <p className="text-sm text-blue-800 font-medium">
-                          Impact: Contributing to better governance and policy outcomes in Uganda
-                        </p>
+      {/* Detailed Focus Areas */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">          
+          <div className="space-y-16">
+            {focusAreas.map((area, index) => {
+              const themeColors = ["border-primary", "border-accent", "border-secondary", "border-destructive"];
+              const currentColor = themeColors[index % 4];
+              
+              return (
+                <div key={`${area.id}-details`} id={`${area.id}-details`} className="scroll-mt-20">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className={index % 2 === 0 ? "order-1" : "order-2"}>
+                      <div className="flex items-center mb-6">
+                        <div className="w-16 h-16 bg-primary/10 rounded-full mr-4 flex items-center justify-center">
+                          <div className="w-8 h-8 bg-primary rounded-full"></div>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                          {area.title}
+                        </h2>
                       </div>
+                      <p className="text-lg text-muted-foreground mb-6">
+                        {area.description}
+                      </p>
+                      <p className="text-muted-foreground mb-8">
+                        {area.details}
+                      </p>
+                      
+                      <div className="mb-8">
+                        <h3 className="text-xl font-semibold text-foreground mb-4">Key Activities:</h3>
+                        <ul className="space-y-3">
+                          {area.activities.map((activity, actIndex) => (
+                            <li key={actIndex} className="flex items-start">
+                              <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2 mr-3"></div>
+                              <span className="text-muted-foreground">{activity}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <Button asChild>
+                        <Link href="/resources">
+                          View Related Resources
+                        </Link>
+                      </Button>
                     </div>
-                  </Card>
+                    
+                    <div className={index % 2 === 0 ? "order-2" : "order-1"}>
+                      <Card className={`relative h-80 overflow-hidden hover:shadow-lg transition-all duration-300 group border-2 ${currentColor}`}>
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url(${area.image})` }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                          <h3 className="text-xl font-bold mb-2">{area.title}</h3>
+                          <p className="text-sm text-white/90 mb-4">{area.description}</p>
+                          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+                            <p className="text-xs text-white font-medium">
+                              Impact: Contributing to better governance and policy outcomes in Uganda
+                            </p>
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Call to Action */}
-      <Section background="gray">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Interested in Our Work?
           </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-white/90 mb-12 max-w-4xl mx-auto">
             Learn more about our research, publications, and how you can get involved in advancing good governance in Uganda.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/resources" variant="primary">
-              View Our Resources
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button asChild size="lg" variant="secondary" className="shadow-lg bg-white text-primary hover:bg-white/90">
+              <Link href="/resources">
+                View Our Resources
+              </Link>
             </Button>
-            <Button href="/get-involved" variant="outline">
-              Get Involved
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary shadow-lg">
+              <Link href="/get-involved">
+                Get Involved
+              </Link>
             </Button>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 };

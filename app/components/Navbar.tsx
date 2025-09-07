@@ -22,30 +22,25 @@ const Navbar = () => {
     {
       label: 'Focus Areas',
       href: '/focus-areas',
-      dropdown: [
-        { label: 'Parliament Watch', href: '/focus-areas#parliament-watch' },
-        { label: 'Parliamentary Democracy and Governance', href: '/focus-areas#democracy' },
-        { label: 'Transparency and Accountability', href: '/focus-areas#transparency' },
-        { label: 'Human Rights', href: '/focus-areas#human-rights' },
-        { label: 'Public Health and Road Safety', href: '/focus-areas#health' },
-        { label: 'Climate Justice', href: '/focus-areas#climate' },
-        { label: 'Artificial Intelligence (AI)', href: '/focus-areas#ai' },
-        { label: 'Post Legislative Scrutiny', href: '/focus-areas#scrutiny' },
-      ]
+      dropdown: null
+    },
+    {
+      label: 'Activities',
+      href: '/activities',
+      dropdown: null
     },
     {
       label: 'Resources',
       href: '/resources',
       dropdown: [
-        { label: 'Publications', href: '/resources#publications' },
-        { label: 'News', href: '/resources#news' },
-        { label: 'Upcoming Events', href: '/resources#upcoming-events' },
-        { label: 'Past Events', href: '/resources#past-events' },
-        { label: 'Policy Briefs', href: '/resources#policy-briefs' },
-        { label: 'Annual Reports', href: '/resources#annual-reports' },
-        { label: 'Blogs', href: '/resources#blogs' },
-        { label: 'Articles', href: '/resources#articles' },
-        { label: 'Newsletters', href: '/resources#newsletters' },
+        { label: 'Publications', href: '/resources/publications' },
+        { label: 'News', href: '/resources/news' },
+        { label: 'Blogs', href: '/resources/blog' },
+        { label: 'Events', href: '/resources/events' },
+        // { label: 'Policy Briefs', href: '/resources/policy-briefs' },
+        // { label: 'Annual Reports', href: '/resources/annual-reports' },
+        // { label: 'Articles', href: '/resources/articles' },
+        // { label: 'Newsletters', href: '/resources/newsletters' },
       ]
     },
     {

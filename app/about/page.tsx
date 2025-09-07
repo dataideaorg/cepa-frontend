@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,10 +9,16 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-secondary to-accent py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="relative h-96 overflow-hidden">
+        <img 
+          src="/hero/about-hero.jpg" 
+          alt="About CEPA - Center for Policy Analysis"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               About CEPA
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto">
@@ -22,34 +29,76 @@ const About: React.FC = () => {
       </section>
 
       {/* Who We Are */}
-      <section id="who-we-are" className="py-16 bg-background">
+      <section id="who-we-are" className="py-20 bg-gradient-to-br from-blue-50 via-yellow-50 to-green-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Who We Are
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              The Centre for Policy Analysis (CEPA) is a leading think tank in Uganda dedicated to shaping public policy and strengthening democratic governance through high-quality research, collaboration, and citizen engagement.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Who We Are
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                CEPA is an independent, non-partisan research organization that conducts evidence-based policy analysis to inform decision-making processes in Uganda. We work closely with parliamentarians, government officials, civil society organizations, and the public to promote good governance and democratic accountability.
-              </p>
-              <p className="text-lg text-muted-foreground mb-8">
-                Our team consists of experienced researchers, policy analysts, and governance experts who are committed to producing high-quality research that contributes to Uganda's development agenda. Through our flagship programs like Parliament Watch Uganda, we empower stakeholders to engage with legislative processes and drive meaningful reforms.
-              </p>
-              <Button asChild>
-                <a href="/get-involved">Join Our Mission</a>
-              </Button>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">🔬</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Evidence-Based Research</h3>
+                    <p className="text-muted-foreground">We conduct rigorous, independent research to inform policy decisions and strengthen democratic governance in Uganda.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">🤝</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Collaborative Approach</h3>
+                    <p className="text-muted-foreground">We work closely with parliamentarians, government officials, civil society, and citizens to drive meaningful reforms.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">🏛️</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Parliament Watch Uganda</h3>
+                    <p className="text-muted-foreground">Our flagship program empowers stakeholders to engage with legislative processes and promote transparency.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8">
+                <Button asChild size="lg" className="shadow-lg">
+                  <a href="/get-involved">Join Our Mission</a>
+                </Button>
+              </div>
             </div>
-            <Card className="p-8 text-center">
-              <CardHeader>
-                <div className="text-6xl mb-4">🏛️</div>
-                <CardTitle className="text-xl">Established</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base">
-                  Founded to strengthen democratic governance in Uganda
-                </CardDescription>
-              </CardContent>
-            </Card>
+            
+            <div className="grid grid-cols-2 gap-6">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+                <div className="text-3xl font-bold text-primary mb-2">10+</div>
+                <div className="text-sm text-muted-foreground">Years of Impact</div>
+              </Card>
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+                <div className="text-3xl font-bold text-secondary mb-2">50+</div>
+                <div className="text-sm text-muted-foreground">Policy Reports</div>
+              </Card>
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+                <div className="text-3xl font-bold text-accent mb-2">100+</div>
+                <div className="text-sm text-muted-foreground">Stakeholders Engaged</div>
+              </Card>
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+                <div className="text-3xl font-bold text-destructive mb-2">15+</div>
+                <div className="text-sm text-muted-foreground">Partner Organizations</div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -67,7 +116,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-primary">
               <CardHeader>
                 <div className="text-4xl mb-4">🎯</div>
                 <CardTitle className="text-xl">Our Vision</CardTitle>
@@ -79,7 +128,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-secondary">
               <CardHeader>
                 <div className="text-4xl mb-4">⚖️</div>
                 <CardTitle className="text-xl">Our Mission</CardTitle>
@@ -91,7 +140,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-accent">
               <CardHeader>
                 <div className="text-4xl mb-4">🌟</div>
                 <CardTitle className="text-xl">Our Values</CardTitle>
@@ -119,7 +168,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary">
               <CardHeader>
                 <CardTitle className="text-xl text-primary">A Unique Consortium Model</CardTitle>
               </CardHeader>
@@ -130,7 +179,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-secondary">
               <CardHeader>
                 <CardTitle className="text-xl text-secondary">Thought Leadership and Innovation</CardTitle>
               </CardHeader>
@@ -141,7 +190,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-accent">
               <CardHeader>
                 <CardTitle className="text-xl text-accent">Collaborative Advocacy</CardTitle>
               </CardHeader>
@@ -152,7 +201,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-destructive">
               <CardHeader>
                 <CardTitle className="text-xl text-destructive">Evidence-Based Approach</CardTitle>
               </CardHeader>
@@ -178,7 +227,7 @@ const About: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               "Enhance parliamentary oversight and accountability mechanisms",
               "Promote transparency in government operations and decision-making",
@@ -188,16 +237,26 @@ const About: React.FC = () => {
               "Leverage technology and AI for better governance",
               "Conduct post-legislative scrutiny to assess policy effectiveness",
               "Build capacity of civil society and government institutions"
-            ].map((objective, index) => (
-              <Card key={index} className="p-6">
-                <CardContent className="flex items-start space-x-4 p-0">
-                  <Badge variant="secondary" className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center p-0">
-                    {index + 1}
-                  </Badge>
-                  <p className="text-foreground">{objective}</p>
-                </CardContent>
-              </Card>
-            ))}
+            ].map((objective, index) => {
+              const colorClasses = {
+                0: "border-primary",
+                1: "border-secondary", 
+                2: "border-accent",
+                3: "border-destructive"
+              };
+              const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
+              
+              return (
+                <Card key={index} className={`p-6 border-2 ${borderColor}`}>
+                  <CardContent className="flex items-start space-x-4 p-0">
+                    <Badge variant="secondary" className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center p-0">
+                      {index + 1}
+                    </Badge>
+                    <p className="text-foreground">{objective}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -214,86 +273,88 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity1.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/financing-safer-roads-cepa-rallies-stakeholders-for-increased-road-safety-investment/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/financing-safer-roads-cepa-rallies-stakeholders-for-increased-road-safety-investment" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Financing Safer Roads: CEPA Rallies Stakeholders for Increased Road Safety Investment
-                </a>
+                </Link>
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity2.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/reclaiming-civic-space-ahead-of-2026-cepa-hosts-high-level-dialogue-on-rights-repression-and-reform/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/reclaiming-civic-space-ahead-of-2026-cepa-hosts-high-level-dialogue-on-rights-repression-and-reform" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Reclaiming Civic Space Ahead of 2026: CEPA Hosts High-Level Dialogue on Rights, Repression, and Reform
-                </a>
+                </Link>
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-accent">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity3.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/shaping-ugandas-next-generation-of-policy-leaders-cepa-hosts-youth-mentorship-session-under-uplp/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/shaping-ugandas-next-generation-of-policy-leaders-cepa-hosts-youth-mentorship-session-under-uplp" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Shaping Uganda's Next Generation of Policy Leaders: CEPA Hosts Youth Mentorship Session under UPLP
-                </a>
+                </Link>
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-destructive">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity4.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/driving-policy-into-action-cepa-co-convenes-the-2025-uganda-road-safety-conference/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/driving-policy-into-action-cepa-co-convenes-the-2025-uganda-road-safety-conference" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Driving Policy into Action: CEPA Co-Convenes the 2025 Uganda Road Safety Conference
-                </a>
+                </Link>
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity5.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/positioning-africa-for-the-future-cepa-co-convenes-summit-on-ethical-and-inclusive-ai-at-the-2025-africa-ai-summit/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/positioning-africa-for-the-future-cepa-co-convenes-summit-on-ethical-and-inclusive-ai-at-the-2025-africa-ai-summit" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Positioning Africa for the Future: CEPA Co-Convenes Summit on Ethical and Inclusive AI at the 2025 Africa AI Summit
-                </a>
+                </Link>
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity6.jpg)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <a href="https://cepa.or.ug/activities/championing-srhr-through-legislative-engagement-cepa-at-the-16th-neapacoh-meeting-in-tanzania/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-yellow-300 text-lg">
+                <Link href="/activities/championing-srhr-through-legislative-engagement-cepa-at-the-16th-neapacoh-meeting-in-tanzania" className="font-semibold text-white hover:text-yellow-300 text-lg">
                   Championing SRHR through Legislative Engagement: CEPA at the 16th NEAPACOH Meeting in Tanzania
-                </a>
+                </Link>
               </div>
             </Card>
           </div>
           <div className="text-center">
-            <a href="/activities" className="inline-block px-6 py-2 rounded-md bg-primary text-white font-semibold hover:bg-primary/90 transition">See all activities</a>
+            <Button asChild size="lg" className="shadow-lg">
+              <Link href="/activities">See All Activities</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -310,36 +371,32 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-center">
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/grsp.png" alt="GRSP Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/kas.png" alt="KAS Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/cepa.webp" alt="CEPA Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/upfya.jpg" alt="UPFYA Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/twaweza.png" alt="Twaweza Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/wfd.png" alt="WFD Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/gapp.jpeg" alt="GAPP Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/diakonia.jpeg" alt="Diakonia Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/ned.jpeg" alt="NED Logo" className="h-16 object-contain max-w-full" />
-            </Card>
-            <Card className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow">
-              <img src="/partners/afidep.jpg" alt="AFIDEP Logo" className="h-16 object-contain max-w-full" />
-            </Card>
+            {[
+              { src: "/partners/grsp.png", alt: "GRSP Logo" },
+              { src: "/partners/kas.png", alt: "KAS Logo" },
+              { src: "/partners/cepa.webp", alt: "CEPA Logo" },
+              { src: "/partners/upfya.jpg", alt: "UPFYA Logo" },
+              { src: "/partners/twaweza.png", alt: "Twaweza Logo" },
+              { src: "/partners/wfd.png", alt: "WFD Logo" },
+              { src: "/partners/gapp.jpeg", alt: "GAPP Logo" },
+              { src: "/partners/diakonia.jpeg", alt: "Diakonia Logo" },
+              { src: "/partners/ned.jpeg", alt: "NED Logo" },
+              { src: "/partners/afidep.jpg", alt: "AFIDEP Logo" }
+            ].map((partner, index) => {
+              const colorClasses = {
+                0: "border-primary",
+                1: "border-secondary", 
+                2: "border-accent",
+                3: "border-destructive"
+              };
+              const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
+              
+              return (
+                <Card key={index} className={`h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow border-2 ${borderColor}`}>
+                  <img src={partner.src} alt={partner.alt} className="h-16 object-contain max-w-full" />
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -357,7 +414,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/timothy-chemonges.jpg)' }}
@@ -380,7 +437,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/angella-kemirembe.jpg)' }}
@@ -403,7 +460,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-accent">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/joseph-tahinduka.jpg)' }}
@@ -426,7 +483,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-destructive">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/rebecca-karagwa.jpg)' }}
@@ -449,7 +506,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/thembo-misairi.jpg)' }}
