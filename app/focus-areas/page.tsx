@@ -154,10 +154,7 @@ const FocusAreas: React.FC = () => {
                 <div key={`${area.id}-details`} id={`${area.id}-details`} className="scroll-mt-20">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className={index % 2 === 0 ? "order-1" : "order-2"}>
-                      <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-primary/10 rounded-full mr-4 flex items-center justify-center">
-                          <div className="w-8 h-8 bg-primary rounded-full"></div>
-                        </div>
+                      <div className="mb-6">
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                           {area.title}
                         </h2>
@@ -173,15 +170,14 @@ const FocusAreas: React.FC = () => {
                         <h3 className="text-xl font-semibold text-foreground mb-4">Key Activities:</h3>
                         <ul className="space-y-3">
                           {area.activities.map((activity, actIndex) => (
-                            <li key={actIndex} className="flex items-start">
-                              <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2 mr-3"></div>
-                              <span className="text-muted-foreground">{activity}</span>
+                            <li key={actIndex} className="text-muted-foreground">
+                              {activity}
                             </li>
                           ))}
                         </ul>
                       </div>
                       
-                      <Button asChild>
+                      <Button asChild className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                         <Link href="/resources">
                           View Related Resources
                         </Link>
@@ -189,7 +185,7 @@ const FocusAreas: React.FC = () => {
                     </div>
                     
                     <div className={index % 2 === 0 ? "order-2" : "order-1"}>
-                      <Card className={`relative h-80 overflow-hidden hover:shadow-lg transition-all duration-300 group border-2 ${currentColor}`}>
+                      <Card className="relative h-80 overflow-hidden hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                         <div 
                           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                           style={{ backgroundImage: `url(${area.image})` }}
@@ -215,7 +211,7 @@ const FocusAreas: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
+      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Interested in Our Work?
@@ -224,12 +220,12 @@ const FocusAreas: React.FC = () => {
             Learn more about our research, publications, and how you can get involved in advancing good governance in Uganda.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" variant="secondary" className="shadow-lg bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/resources">
                 View Our Resources
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary shadow-lg">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved">
                 Get Involved
               </Link>

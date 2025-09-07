@@ -233,7 +233,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                 const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
                 
                 return (
-                  <Card key={relatedActivity.id} className={`relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 ${borderColor}`}>
+                  <Card key={relatedActivity.id} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div 
                       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                       style={{ backgroundImage: `url(${relatedActivity.image})` }}
@@ -244,7 +244,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         <span className="text-xs text-white/80">{relatedActivity.date}</span>
                       </div>
                       <h3 className="text-lg font-bold mb-4 line-clamp-2">{relatedActivity.title}</h3>
-                      <Button asChild size="sm" className="bg-white text-black hover:bg-white/90">
+                      <Button asChild size="sm" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
                         <Link href={`/activities/${relatedActivity.slug}`}>
                           Read More
                         </Link>
@@ -261,7 +261,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
       {/* Back to Activities */}
       <section className="py-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="outline" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
             <Link href="/activities">
               ← Back to All Activities
             </Link>

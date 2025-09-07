@@ -117,7 +117,7 @@ const GetInvolved: React.FC = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {option.opportunities.map((opportunity, oppIndex) => (
-                  <Card key={oppIndex} hover className="p-6">
+                  <Card key={oppIndex} hover className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">{opportunity.title}</h3>
                     <div className="space-y-2 mb-4">
                       {opportunity.type && (
@@ -151,7 +151,7 @@ const GetInvolved: React.FC = () => {
                         </p>
                       )}
                     </div>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button variant="outline" size="sm" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                       {option.id === 'donate' ? 'Donate Now' : 
                        option.id === 'contact' ? 'Contact Us' : 
                        'Learn More'}
@@ -206,7 +206,7 @@ const GetInvolved: React.FC = () => {
               icon: "🎓"
             }
           ].map((benefit, index) => (
-            <Card key={index} hover className="p-6 text-center">
+            <Card key={index} hover className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
               <div className="text-4xl mb-4">{benefit.icon}</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
               <p className="text-gray-600">{benefit.description}</p>
@@ -226,7 +226,7 @@ const GetInvolved: React.FC = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
               <div className="text-3xl mb-4">📧</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
               <p className="text-gray-600 mb-4">info@cepa.or.ug</p>
@@ -235,7 +235,7 @@ const GetInvolved: React.FC = () => {
               </Button>
             </Card>
             
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
               <div className="text-3xl mb-4">📞</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
               <p className="text-gray-600 mb-4">+256 XXX XXX XXX</p>
@@ -244,7 +244,7 @@ const GetInvolved: React.FC = () => {
               </Button>
             </Card>
             
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
               <div className="text-3xl mb-4">📍</div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Visit Us</h3>
               <p className="text-gray-600 mb-4">Kampala, Uganda</p>

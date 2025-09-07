@@ -47,22 +47,22 @@ const Navbar = () => {
       label: 'Multimedia',
       href: '/multimedia',
       dropdown: [
-        { label: 'Podcasts', href: '/multimedia#podcasts' },
-        { label: 'Videos', href: '/multimedia#videos' },
-        { label: 'Gallery', href: '/multimedia#gallery' },
+        { label: 'Podcasts', href: '/multimedia/podcasts' },
+        { label: 'Videos', href: '/multimedia/videos' },
+        { label: 'Gallery', href: '/multimedia/gallery' },
       ]
     },
     {
       label: 'Get Involved',
       href: '/get-involved',
       dropdown: [
-        { label: 'Careers', href: '/get-involved#careers' },
-        { label: 'Internship', href: '/get-involved#internship' },
-        { label: 'Fellowship', href: '/get-involved#fellowship' },
-        { label: 'Announcements', href: '/get-involved#announcements' },
-        { label: 'Contact Us', href: '/get-involved#contact' },
-        { label: 'Donate', href: '/get-involved#donate' },
-        { label: 'Membership', href: '/get-involved#membership' },
+        { label: 'Careers', href: '/get-involved/careers' },
+        { label: 'Internship', href: '/get-involved/internship' },
+        { label: 'Fellowship', href: '/get-involved/fellowship' },
+        { label: 'Announcements', href: '/get-involved/announcements' },
+        { label: 'Contact Us', href: '/get-involved/contact' },
+        { label: 'Donate', href: '/get-involved/donate' },
+        { label: 'Membership', href: '/get-involved/membership' },
       ]
     },
   ];
@@ -72,7 +72,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center">
             <img 
               src="/CEPA-LOGO.webp" 
               alt="CEPA Logo" 
@@ -87,7 +87,7 @@ const Navbar = () => {
                 return (
                   <DropdownMenu key={item.label}>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="text-gray-700 hover:text-primary">
+                      <Button variant="ghost" className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200">
                         {item.label}
                         <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -107,7 +107,7 @@ const Navbar = () => {
                 );
               } else {
                 return (
-                  <Button key={item.label} variant="ghost" asChild className="text-gray-700 hover:text-primary">
+                  <Button key={item.label} variant="ghost" asChild className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200">
                     <Link href={item.href}>
                       {item.label}
                     </Link>
@@ -139,7 +139,7 @@ const Navbar = () => {
                 <div key={item.label}>
                   <Link
                     href={item.href}
-                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-accent rounded-md"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors duration-200"
                     onClick={() => setActiveDropdown(null)}
                   >
                     {item.label}
@@ -150,7 +150,7 @@ const Navbar = () => {
                         <Link
                           key={dropdownItem.label}
                           href={dropdownItem.href}
-                          className="block px-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-accent rounded-md"
+                          className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors duration-200"
                           onClick={() => setActiveDropdown(null)}
                         >
                           {dropdownItem.label}

@@ -29,7 +29,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Who We Are */}
-      <section id="who-we-are" className="py-20 bg-gradient-to-br from-blue-50 via-yellow-50 to-green-50">
+      <section id="who-we-are" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -75,26 +75,26 @@ const About: React.FC = () => {
               </div>
               
               <div className="mt-8">
-                <Button asChild size="lg" className="shadow-lg">
+                <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                   <a href="/get-involved">Join Our Mission</a>
                 </Button>
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-primary mb-2">10+</div>
                 <div className="text-sm text-muted-foreground">Years of Impact</div>
               </Card>
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-secondary mb-2">50+</div>
                 <div className="text-sm text-muted-foreground">Policy Reports</div>
               </Card>
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-accent mb-2">100+</div>
                 <div className="text-sm text-muted-foreground">Stakeholders Engaged</div>
               </Card>
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-destructive mb-2">15+</div>
                 <div className="text-sm text-muted-foreground">Partner Organizations</div>
               </Card>
@@ -104,7 +104,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Story */}
-      <section id="story" className="py-16 bg-muted/50">
+      <section id="story" className="py-16 bg-gradient-to-br from-blue-50 via-yellow-50 to-green-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -116,7 +116,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-primary">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <div className="text-4xl mb-4">🎯</div>
                 <CardTitle className="text-xl">Our Vision</CardTitle>
@@ -128,7 +128,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-secondary">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <div className="text-4xl mb-4">⚖️</div>
                 <CardTitle className="text-xl">Our Mission</CardTitle>
@@ -140,7 +140,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-2 border-accent">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <div className="text-4xl mb-4">🌟</div>
                 <CardTitle className="text-xl">Our Values</CardTitle>
@@ -156,7 +156,7 @@ const About: React.FC = () => {
       </section>
 
       {/* What Sets CEPA Apart */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -168,7 +168,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary">
+            <Card className="p-6 hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl text-primary">A Unique Consortium Model</CardTitle>
               </CardHeader>
@@ -179,7 +179,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-secondary">
+            <Card className="p-6 hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl text-secondary">Thought Leadership and Innovation</CardTitle>
               </CardHeader>
@@ -190,7 +190,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-accent">
+            <Card className="p-6 hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl text-accent">Collaborative Advocacy</CardTitle>
               </CardHeader>
@@ -201,7 +201,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-destructive">
+            <Card className="p-6 hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl text-destructive">Evidence-Based Approach</CardTitle>
               </CardHeader>
@@ -216,7 +216,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Objectives */}
-      <section id="objectives" className="py-16 bg-background">
+      <section id="objectives" className="py-16 bg-gradient-to-br from-yellow-50 via-green-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -247,7 +247,7 @@ const About: React.FC = () => {
               const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
               
               return (
-                <Card key={index} className={`p-6 border-2 ${borderColor}`}>
+                <Card key={index} className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
                   <CardContent className="flex items-start space-x-4 p-0">
                     <Badge variant="secondary" className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center p-0">
                       {index + 1}
@@ -262,7 +262,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Activities */}
-      <section id="activities" className="py-16 bg-background">
+      <section id="activities" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -273,7 +273,7 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity1.jpg)' }}
@@ -286,7 +286,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity2.jpg)' }}
@@ -299,7 +299,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-accent">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity3.jpg)' }}
@@ -312,7 +312,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-destructive">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity4.jpg)' }}
@@ -325,7 +325,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity5.jpg)' }}
@@ -338,7 +338,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/activities/activity6.jpg)' }}
@@ -352,7 +352,7 @@ const About: React.FC = () => {
             </Card>
           </div>
           <div className="text-center">
-            <Button asChild size="lg" className="shadow-lg">
+            <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
               <Link href="/activities">See All Activities</Link>
             </Button>
           </div>
@@ -360,7 +360,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Funders and Partners */}
-      <section id="partners" className="py-16 bg-background">
+      <section id="partners" className="py-16 bg-gradient-to-br from-green-50 via-red-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -392,7 +392,7 @@ const About: React.FC = () => {
               const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
               
               return (
-                <Card key={index} className={`h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow border-2 ${borderColor}`}>
+                <Card key={index} className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                   <img src={partner.src} alt={partner.alt} className="h-16 object-contain max-w-full" />
                 </Card>
               );
@@ -402,7 +402,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Meet the Team */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -414,7 +414,7 @@ const About: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/timothy-chemonges.jpg)' }}
@@ -428,7 +428,7 @@ const About: React.FC = () => {
                       Executive Director
                     </Badge>
                   </div>
-                  <Button variant="outline" size="sm" asChild className="border-white/50 text-black hover:bg-white hover:text-black ml-4">
+                  <Button variant="outline" size="sm" asChild className="bg-white/20 text-white border border-white/30 hover:bg-white/30 ml-4">
                     <a href="https://www.linkedin.com/in/timothy-chemonges-1a47a4173/?originalSubdomain=ug" target="_blank" rel="noopener noreferrer">
                       View Profile
                     </a>
@@ -437,7 +437,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-secondary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/angella-kemirembe.jpg)' }}
@@ -451,7 +451,7 @@ const About: React.FC = () => {
                       Communication Manager
                     </Badge>
                   </div>
-                  <Button variant="outline" size="sm" asChild className="border-white/50 text-black hover:bg-white hover:text-black ml-4">
+                  <Button variant="outline" size="sm" asChild className="bg-white/20 text-white border border-white/30 hover:bg-white/30 ml-4">
                     <a href="https://www.linkedin.com/in/angella-hilda-kemirembe-35111a9b" target="_blank" rel="noopener noreferrer">
                       View Profile
                     </a>
@@ -460,7 +460,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-accent">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/joseph-tahinduka.jpg)' }}
@@ -474,7 +474,7 @@ const About: React.FC = () => {
                       Programmes Officer
                     </Badge>
                   </div>
-                  <Button variant="outline" size="sm" asChild className="border-white/50 text-black hover:bg-white hover:text-black ml-4">
+                  <Button variant="outline" size="sm" asChild className="bg-white/20 text-white border border-white/30 hover:bg-white/30 ml-4">
                     <a href="https://www.linkedin.com/in/tahinduka-joseph-8ba5401b5/" target="_blank" rel="noopener noreferrer">
                       View Profile
                     </a>
@@ -483,7 +483,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-destructive">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/rebecca-karagwa.jpg)' }}
@@ -497,7 +497,7 @@ const About: React.FC = () => {
                       Programmes Associate
                     </Badge>
                   </div>
-                  <Button variant="outline" size="sm" asChild className="border-white/50 text-black hover:bg-white hover:text-black ml-4">
+                  <Button variant="outline" size="sm" asChild className="bg-white/20 text-white border border-white/30 hover:bg-white/30 ml-4">
                     <a href="https://www.linkedin.com/in/rebecca-karagwa-10a7b3133/" target="_blank" rel="noopener noreferrer">
                       View Profile
                     </a>
@@ -506,7 +506,7 @@ const About: React.FC = () => {
               </div>
             </Card>
             
-            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 border-primary">
+            <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/team-images/thembo-misairi.jpg)' }}
@@ -520,7 +520,7 @@ const About: React.FC = () => {
                       Team Member
                     </Badge>
                   </div>
-                  <Button variant="outline" size="sm" asChild className="border-white/50 text-black hover:bg-white hover:text-black ml-4">
+                  <Button variant="outline" size="sm" asChild className="bg-white/20 text-white border border-white/30 hover:bg-white/30 ml-4">
                     <a href="https://x.com/themboka" target="_blank" rel="noopener noreferrer">
                       View Profile
                     </a>
@@ -533,7 +533,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-primary via-secondary to-accent text-white text-center">
+      <section className="py-16 text-white text-center" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Join Us in Our Mission
@@ -542,10 +542,10 @@ const About: React.FC = () => {
             Whether you're a researcher, policymaker, or concerned citizen, there are many ways to get involved with CEPA's work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="secondary" size="lg" className="shadow-lg">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <a href="/get-involved">Get Involved</a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-gray-900 shadow-lg">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <a href="/resources">View Our Work</a>
             </Button>
           </div>

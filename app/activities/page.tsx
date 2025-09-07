@@ -193,7 +193,11 @@ export default function ActivitiesPage() {
               <Badge 
                 key={category}
                 variant={category === 'All' ? 'default' : 'secondary'}
-                className="px-4 py-2 text-sm cursor-pointer hover:bg-primary hover:text-white transition-colors"
+                className={`px-4 py-2 text-sm cursor-pointer transition-colors ${
+                  category === 'All' 
+                    ? 'bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30' 
+                    : 'bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30'
+                }`}
               >
                 {category}
               </Badge>
@@ -212,7 +216,7 @@ export default function ActivitiesPage() {
               const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
               
               return (
-                <Card key={activity.id} className={`relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 ${borderColor}`}>
+                <Card key={activity.id} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${activity.image})` }}
@@ -227,7 +231,7 @@ export default function ActivitiesPage() {
                     </div>
                     <h3 className="text-lg font-bold mb-2 line-clamp-2">{activity.title}</h3>
                     <p className="text-sm text-white/90 mb-4 line-clamp-2">{activity.description}</p>
-                    <Button asChild size="sm" className="bg-white text-black hover:bg-white/90">
+                    <Button asChild size="sm" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
                       <Link href={`/activities/${activity.slug}`}>
                         Read More
                       </Link>
@@ -240,7 +244,7 @@ export default function ActivitiesPage() {
 
           {/* Load More Button */}
           <div className="text-center mt-12">
-            <Button size="lg" className="shadow-lg">
+            <Button size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
               Load More Activities
             </Button>
           </div>

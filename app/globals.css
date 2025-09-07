@@ -72,8 +72,9 @@
   --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground));
   --color-sidebar-border: rgb(var(--sidebar-border));
   --color-sidebar-ring: rgb(var(--sidebar-ring));
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-gabarito);
   --font-mono: var(--font-geist-mono);
+  --font-gabarito: var(--font-gabarito);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -88,9 +89,22 @@
 }
 
 body {
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-gabarito), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
 }
+
+/* 
+  Available Font Classes:
+  - font-sans: Gabarito (default - Google Font)
+  - font-mono: Geist Mono
+  - font-gabarito: Gabarito (explicit - same as default)
+  
+  Usage examples:
+  - No class needed - Gabarito is now the default font
+  - className="font-bold" - Default font (Gabarito) with bold weight
+  - className="font-semibold text-2xl" - Default font with semibold and large text
+  - className="font-mono" - Use Geist Mono for code/technical content
+*/
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

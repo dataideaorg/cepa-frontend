@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Section from "../components/Section";
 import Card from "../components/Card";
 import Button from "../components/Button";
@@ -73,7 +74,7 @@ const Multimedia: React.FC = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item, itemIndex) => (
-                  <Card key={itemIndex} hover className="p-6">
+                  <Card key={itemIndex} hover className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
                         {item.duration || item.type}
@@ -81,7 +82,7 @@ const Multimedia: React.FC = () => {
                       <span className="text-sm text-gray-500">{item.date}</span>
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">{item.title}</h3>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button variant="outline" size="sm" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                       {category.id === 'gallery' ? 'View Gallery' : 'Watch/Listen'}
                     </Button>
                   </Card>
@@ -110,7 +111,7 @@ const Multimedia: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="p-8">
+          <Card className="p-8 bg-white/20 border border-white/30 backdrop-blur-sm">
             <div className="flex items-center mb-4">
               <div className="text-3xl mr-3">🎧</div>
               <div>
@@ -129,7 +130,7 @@ const Multimedia: React.FC = () => {
             </Button>
           </Card>
           
-          <Card className="p-8">
+          <Card className="p-8 bg-white/20 border border-white/30 backdrop-blur-sm">
             <div className="flex items-center mb-4">
               <div className="text-3xl mr-3">🎥</div>
               <div>
@@ -151,22 +152,28 @@ const Multimedia: React.FC = () => {
       </Section>
 
       {/* Call to Action */}
-      <Section background="blue" className="text-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Stay Connected
-        </h2>
-        <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-          Subscribe to our channels to get notified about new multimedia content and stay updated with our latest work.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/resources#newsletters" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-            Subscribe to Newsletter
-          </Button>
-          <Button href="/get-involved" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-            Get Involved
-          </Button>
+      <section className="py-20 text-white text-center" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Stay Connected
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Subscribe to our channels to get notified about new multimedia content and stay updated with our latest work.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
+              <Link href="/resources#newsletters">
+                Subscribe to Newsletter
+              </Link>
+            </Button>
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
+              <Link href="/get-involved">
+                Get Involved
+              </Link>
+            </Button>
+          </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 };

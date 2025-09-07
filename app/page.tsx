@@ -24,12 +24,12 @@ const Home: React.FC = () => {
               Advancing parliamentary democracy, governance, and human rights in Uganda through evidence-based policy research and analysis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="shadow-lg text-lg px-8 py-6 bg-secondary text-black hover:bg-secondary/90">
+              <Button asChild size="lg" className="shadow-lg text-lg px-8 py-6 bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
                 <Link href="/about">
                   Learn More About Us
                 </Link>
               </Button>
-              <Button asChild size="lg" className="shadow-lg text-lg px-8 py-6 bg-accent text-black hover:bg-accent/90">
+              <Button asChild size="lg" className="shadow-lg text-lg px-8 py-6 bg-accent/20 text-accent border border-accent/30 hover:bg-accent/30">
                 <Link href="/get-involved">
                   Get Involved
                 </Link>
@@ -53,58 +53,23 @@ const Home: React.FC = () => {
             </p>
           </div>
           
-          {/* Compact Mission Flow */}
+          {/* Mission Flow */}
           <div className="relative">
-            {/* Animated Flow Connector */}
+            {/* Simple Mission Flow */}
             <div className="flex items-center justify-center mb-8">
-              <div className="flex items-center space-x-4 bg-gradient-to-r from-blue-50 via-yellow-50 to-green-50 rounded-full px-8 py-4 border border-gray-200">
-                {/* Research Icon */}
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-primary rounded-full animate-pulse flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
-                  </div>
-                  <span className="text-sm font-medium text-primary hidden sm:inline">Research</span>
-                </div>
-                
-                {/* Animated Arrow 1 */}
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-primary/40 rounded-full animate-ping"></div>
-                  <div className="w-2 h-2 bg-primary/60 rounded-full animate-ping" style={{animationDelay: '0.2s'}}></div>
-                  <div className="w-2 h-2 bg-primary/80 rounded-full animate-ping" style={{animationDelay: '0.4s'}}></div>
-                </div>
-                
-                {/* Monitoring Icon */}
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-secondary rounded-full animate-pulse flex items-center justify-center" style={{animationDelay: '0.5s'}}>
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
-                  </div>
-                  <span className="text-sm font-medium text-secondary hidden sm:inline">Monitoring</span>
-                </div>
-                
-                {/* Animated Arrow 2 */}
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-secondary/40 rounded-full animate-ping" style={{animationDelay: '0.6s'}}></div>
-                  <div className="w-2 h-2 bg-secondary/60 rounded-full animate-ping" style={{animationDelay: '0.8s'}}></div>
-                  <div className="w-2 h-2 bg-secondary/80 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
-                </div>
-                
-                {/* Advocacy Icon */}
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-accent rounded-full animate-pulse flex items-center justify-center" style={{animationDelay: '1s'}}>
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
-                  </div>
-                  <span className="text-sm font-medium text-accent hidden sm:inline">Advocacy</span>
-                </div>
+              <div className="flex items-center space-x-8 bg-gradient-to-r from-blue-50 via-yellow-50 to-green-50 rounded-lg px-8 py-4 border border-gray-200">
+                <span className="text-lg font-medium text-primary">Research</span>
+                <span className="text-gray-400">→</span>
+                <span className="text-lg font-medium text-secondary">Monitoring</span>
+                <span className="text-gray-400">→</span>
+                <span className="text-lg font-medium text-accent">Advocacy</span>
               </div>
             </div>
 
             {/* Mission Cards - Compact Layout */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-l-primary group">
+              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <div className="w-6 h-6 bg-primary rounded-full"></div>
-                  </div>
                   <CardTitle className="text-lg text-foreground">Research Excellence</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -114,11 +79,8 @@ const Home: React.FC = () => {
                 </CardContent>
               </Card>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-yellow-50 to-yellow-100 border-l-4 border-l-secondary group">
+              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-secondary/10 rounded-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <div className="w-6 h-6 bg-secondary rounded-full"></div>
-                  </div>
                   <CardTitle className="text-lg text-foreground">Parliamentary Monitoring</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -128,11 +90,8 @@ const Home: React.FC = () => {
                 </CardContent>
               </Card>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100 border-l-4 border-l-accent group">
+              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-accent/10 rounded-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <div className="w-6 h-6 bg-accent rounded-full"></div>
-                  </div>
                   <CardTitle className="text-lg text-foreground">Evidence-Based Advocacy</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -205,7 +164,7 @@ const Home: React.FC = () => {
               };
               
               return (
-                <Card key={index} className={`relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 ${colorClasses[area.color as keyof typeof colorClasses]}`}>
+                <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${area.image})` }}
@@ -220,13 +179,13 @@ const Home: React.FC = () => {
             })}
           </div>
           
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="shadow-lg">
-              <Link href="/focus-areas">
-                Explore All Focus Areas
-              </Link>
-            </Button>
-          </div>
+            <div className="text-center mt-12">
+              <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+                <Link href="/focus-areas">
+                  Explore All Focus Areas
+                </Link>
+              </Button>
+            </div>
         </div>
       </section>
 
@@ -273,7 +232,7 @@ const Home: React.FC = () => {
               };
               
               return (
-                <Card key={index} className={`hover:shadow-lg transition-shadow ${colorClasses[update.color as keyof typeof colorClasses]}`}>
+                <Card key={index} className="hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary" className="font-medium">{update.type}</Badge>
@@ -289,18 +248,18 @@ const Home: React.FC = () => {
             })}
           </div>
           
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="shadow-lg">
-              <Link href="/resources">
-                View All Resources
-              </Link>
-            </Button>
-          </div>
+            <div className="text-center mt-12">
+              <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+                <Link href="/resources">
+                  View All Resources
+                </Link>
+              </Button>
+            </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
+      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Join Us in Building a Better Uganda
@@ -309,12 +268,12 @@ const Home: React.FC = () => {
             Whether through research, advocacy, or direct engagement, there are many ways to contribute to our mission of strengthening democratic governance and promoting transparency in Uganda.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" className="shadow-lg bg-secondary text-black hover:bg-secondary/90">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved#donate">
                 Donate Now
               </Link>
             </Button>
-            <Button asChild size="lg" className="shadow-lg bg-accent text-black hover:bg-accent/90">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved#careers">
                 Explore Careers
               </Link>

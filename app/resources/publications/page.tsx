@@ -169,7 +169,7 @@ const Publications: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {publications.filter(pub => pub.featured).map((publication, index) => (
-              <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group">
+              <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className={`${getCategoryColor(publication.category)} text-xs`}>
@@ -189,7 +189,7 @@ const Publications: React.FC = () => {
                     {publication.description}
                   </p>
                   {publication.pdf && (
-                    <Button asChild size="sm" variant="secondary" className="w-full">
+                    <Button asChild size="sm" variant="secondary" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                       <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
                         Download PDF
                       </a>
@@ -216,7 +216,7 @@ const Publications: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {publications.map((publication, index) => (
-              <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group">
+              <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className={`${getCategoryColor(publication.category)} text-xs`}>
@@ -236,7 +236,7 @@ const Publications: React.FC = () => {
                     {publication.description}
                   </p>
                   {publication.pdf && (
-                    <Button asChild size="sm" variant="secondary" className="w-full">
+                    <Button asChild size="sm" variant="secondary" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                       <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
                         Download PDF
                       </a>
@@ -251,7 +251,7 @@ const Publications: React.FC = () => {
 
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
+      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Stay Informed
@@ -260,12 +260,12 @@ const Publications: React.FC = () => {
             Subscribe to our newsletter to receive the latest publications, research updates, and policy insights directly to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" variant="secondary" className="shadow-lg bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved#newsletter">
                 Subscribe to Newsletter
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary shadow-lg">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/resources">
                 Browse All Resources
               </Link>

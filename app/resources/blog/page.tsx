@@ -162,7 +162,7 @@ const Blog: React.FC = () => {
               const currentColor = themeColors[index % 4];
               
               return (
-                <Card key={post.id} className={`relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 ${currentColor}`}>
+                <Card key={post.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${post.image})` }}
@@ -177,7 +177,7 @@ const Blog: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.title}</h3>
                     <p className="text-sm text-white/90 mb-3">{post.date}</p>
                     <p className="text-sm text-white/80 mb-4 line-clamp-3">{post.description}</p>
-                    <Button asChild size="sm" variant="outline" className={`bg-white text-black border-2 ${currentColor} hover:bg-white hover:text-black`}>
+                    <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
                       <Link href={`/resources/blog/${post.slug}`} className="text-black">
                         Read More
                       </Link>
@@ -208,7 +208,7 @@ const Blog: React.FC = () => {
               const currentColor = themeColors[index % 4];
               
               return (
-                <Card key={post.id} className={`relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group border-2 ${currentColor}`}>
+                <Card key={post.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${post.image})` }}
@@ -223,7 +223,7 @@ const Blog: React.FC = () => {
                     <h3 className="text-xl font-bold mb-2 line-clamp-2">{post.title}</h3>
                     <p className="text-sm text-white/90 mb-3">{post.date}</p>
                     <p className="text-sm text-white/80 mb-4 line-clamp-3">{post.description}</p>
-                    <Button asChild size="sm" variant="outline" className={`bg-white text-black border-2 ${currentColor} hover:bg-white hover:text-black`}>
+                    <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
                       <Link href={`/resources/blog/${post.slug}`} className="text-black">
                         Read More
                       </Link>
@@ -237,7 +237,7 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary via-secondary to-accent">
+      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Stay Informed
@@ -246,12 +246,12 @@ const Blog: React.FC = () => {
             Subscribe to our newsletter to receive the latest policy analysis, research insights, and expert commentary directly to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" variant="secondary" className="shadow-lg bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/get-involved#newsletter">
                 Subscribe to Newsletter
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary shadow-lg">
+            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/resources">
                 Browse All Resources
               </Link>
