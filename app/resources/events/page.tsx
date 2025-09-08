@@ -1,118 +1,57 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEvents, useFeaturedEvents, useUpcomingEvents } from "@/lib/hooks";
+import LoadingSpinner from "@/app/components/LoadingSpinner";
+import ErrorMessage from "@/app/components/ErrorMessage";
+import Pagination from "@/app/components/Pagination";
+import SearchFilter from "@/app/components/SearchFilter";
 
 const Events: React.FC = () => {
-  const events = [
-    {
-      id: "uganda-road-safety-conference-2025",
-      title: "Driving Policy into Action: CEPA Co-Convenes the 2025 Uganda Road Safety Conference",
-      date: "May 14-15, 2025",
-      time: "9:00 AM - 5:00 PM",
-      location: "Kampala, Uganda",
-      category: "Conference",
-      description: "From 14–15 May 2025, CEPA co-convened the Uganda Road Safety Conference, bringing together policymakers, civil society organizations, and road safety experts to discuss innovative approaches to reducing road traffic accidents and fatalities in Uganda.",
-      image: "/events/road-safety-conference.jpg",
-      slug: "uganda-road-safety-conference-2025",
-      featured: true,
-      status: "upcoming"
-    },
-    {
-      id: "neapacoh-meeting-tanzania-2025",
-      title: "Championing SRHR through Legislative Engagement: CEPA at the 16th NEAPACOH Meeting in Tanzania",
-      date: "March 5-8, 2025",
-      time: "8:00 AM - 6:00 PM",
-      location: "Dar es Salaam, Tanzania",
-      category: "Meeting",
-      description: "CEPA participated in the 16th NEAPACOH meeting from 5th to 8th March 2025, focusing on sexual and reproductive health rights (SRHR) advocacy and legislative engagement across East and Central Africa.",
-      image: "/events/neapacoh-meeting.jpg",
-      slug: "neapacoh-meeting-tanzania-2025",
-      featured: true,
-      status: "upcoming"
-    },
-    {
-      id: "ethiopia-civil-society-workshop-2024",
-      title: "Bridging Borders, Deepening Democracy: CEPA's Experience-Sharing at the Ethiopia Civil Society Engagement Workshop",
-      date: "November 19, 2024",
-      time: "9:00 AM - 4:00 PM",
-      location: "Addis Ababa, Ethiopia",
-      category: "Workshop",
-      description: "CEPA joined regional civil society leaders in Ethiopia for a comprehensive workshop on democratic engagement, policy advocacy, and cross-border collaboration in East Africa.",
-      image: "/events/ethiopia-workshop.jpg",
-      slug: "ethiopia-civil-society-workshop-2024",
-      featured: false,
-      status: "completed"
-    },
-    {
-      id: "africa-road-safety-seminar-2024",
-      title: "The Africa Road Safety Seminar 2024 in Nairobi, Kenya",
-      date: "October 21, 2024",
-      time: "8:30 AM - 5:30 PM",
-      location: "Nairobi, Kenya",
-      category: "Seminar",
-      description: "Being half way through the African Road Safety Action Plan, this seminar brought together road safety stakeholders from across the continent to assess progress and chart the way forward for safer roads in Africa.",
-      image: "/events/africa-road-safety-seminar.jpg",
-      slug: "africa-road-safety-seminar-2024",
-      featured: false,
-      status: "completed"
-    },
-    {
-      id: "speed-management-validation-meetings-2024",
-      title: "Speed Management in Uganda: Insights from the validation meetings on the speed regulations",
-      date: "August 5, 2024",
-      time: "10:00 AM - 3:00 PM",
-      location: "Kampala, Uganda",
-      category: "Validation Meeting",
-      description: "In an effort to strengthen the road safety policy framework, CEPA facilitated validation meetings to review and refine speed management regulations for Uganda's road network.",
-      image: "/events/speed-management-meeting.jpg",
-      slug: "speed-management-validation-meetings-2024",
-      featured: false,
-      status: "completed"
-    },
-    {
-      id: "youth-policy-advocacy-training-2024",
-      title: "Youth Policy Advocacy Training Workshop",
-      date: "July 15-17, 2024",
-      time: "9:00 AM - 4:00 PM",
-      location: "Kampala, Uganda",
-      category: "Training",
-      description: "A comprehensive training program designed to equip young people with the skills and knowledge needed to effectively engage in policy advocacy and legislative processes.",
-      image: "/events/youth-training.jpg",
-      slug: "youth-policy-advocacy-training-2024",
-      featured: false,
-      status: "completed"
-    },
-    {
-      id: "parliamentary-oversight-seminar-2024",
-      title: "Strengthening Parliamentary Oversight: A Regional Seminar",
-      date: "June 10-12, 2024",
-      time: "8:30 AM - 5:00 PM",
-      location: "Kampala, Uganda",
-      category: "Seminar",
-      description: "This regional seminar brought together parliamentarians and civil society representatives to discuss best practices in parliamentary oversight and accountability mechanisms.",
-      image: "/events/parliamentary-oversight.jpg",
-      slug: "parliamentary-oversight-seminar-2024",
-      featured: false,
-      status: "completed"
-    },
-    {
-      id: "digital-rights-conference-2024",
-      title: "Digital Rights and Data Protection Conference 2024",
-      date: "May 20-22, 2024",
-      time: "9:00 AM - 6:00 PM",
-      location: "Kampala, Uganda",
-      category: "Conference",
-      description: "A comprehensive conference exploring digital rights, data protection, and cybersecurity challenges in Uganda and the broader East African region.",
-      image: "/events/digital-rights-conference.jpg",
-      slug: "digital-rights-conference-2024",
-      featured: false,
-      status: "completed"
-    }
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filters, setFilters] = useState<Record<string, string>>({});
+  
+  // Fetch featured events
+  const { data: featuredEvents, loading: featuredLoading, error: featuredError } = useFeaturedEvents();
+  
+  // Fetch upcoming events
+  const { data: upcomingEvents, loading: upcomingLoading, error: upcomingError } = useUpcomingEvents();
+  
+  // Fetch all events with pagination and filters
+  const { data: allEventsData, loading: allEventsLoading, error: allEventsError, refetch } = useEvents({
+    page: currentPage,
+    page_size: 9,
+    search: searchQuery || undefined,
+    ...filters
+  });
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleFilter = (newFilters: Record<string, string>) => {
+    setFilters(newFilters);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Get unique categories for filter options
+  const categories = [
+    "Conference", "Meeting", "Workshop", "Seminar", "Training", "Advocacy"
+  ];
+
+  const statusOptions = [
+    "upcoming", "completed", "cancelled"
   ];
 
   const getCategoryColor = (category: string) => {
@@ -135,9 +74,6 @@ const Events: React.FC = () => {
     };
     return colors[status] || "bg-muted text-muted-foreground border-muted";
   };
-
-  const upcomingEvents = events.filter(event => event.status === "upcoming");
-  const pastEvents = events.filter(event => event.status === "completed");
 
   return (
     <div className="min-h-screen">
@@ -172,7 +108,7 @@ const Events: React.FC = () => {
       </section>
 
       {/* Upcoming Events */}
-      {upcomingEvents.length > 0 && (
+      {upcomingEvents && upcomingEvents.length > 0 && (
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
@@ -190,8 +126,17 @@ const Events: React.FC = () => {
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event, index) => {
+            {upcomingLoading ? (
+              <LoadingSpinner size="lg" className="py-12" />
+            ) : upcomingError ? (
+              <ErrorMessage 
+                message={upcomingError} 
+                onRetry={() => window.location.reload()} 
+                className="py-12" 
+              />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event, index) => {
                 const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
                 const currentColor = themeColors[index % 4];
                 
@@ -234,25 +179,57 @@ const Events: React.FC = () => {
                   </Card>
                 );
               })}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       )}
 
-      {/* Past Events */}
+      {/* All Events */}
       <section className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Past Events
+              All Events
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Explore our recent events, workshops, and conferences that have shaped policy discourse and civic engagement.
+              Complete collection of events, workshops, conferences, and training programs from CEPA.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pastEvents.map((event, index) => {
+          {/* Search and Filter */}
+          <div className="mb-12">
+            <SearchFilter
+              onSearch={handleSearch}
+              onFilter={handleFilter}
+              searchPlaceholder="Search events..."
+              filterOptions={{
+                category: categories,
+                status: statusOptions,
+                featured: true
+              }}
+            />
+          </div>
+
+          {/* Events Grid */}
+          {allEventsLoading ? (
+            <LoadingSpinner size="lg" className="py-12" />
+          ) : allEventsError ? (
+            <ErrorMessage 
+              message={allEventsError} 
+              onRetry={refetch} 
+              className="py-12" 
+            />
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {allEventsData?.results?.map((event, index) => {
               const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
               const currentColor = themeColors[index % 4];
               
@@ -295,7 +272,18 @@ const Events: React.FC = () => {
                 </Card>
               );
             })}
-          </div>
+              </div>
+
+              {/* Pagination */}
+              {allEventsData && allEventsData.count > 9 && (
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={Math.ceil(allEventsData.count / 9)}
+                  onPageChange={handlePageChange}
+                />
+              )}
+            </>
+          )}
         </div>
       </section>
 
