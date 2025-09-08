@@ -25,12 +25,41 @@ export const metadata: Metadata = {
   description: "The Center for Policy Analysis (CEPA) is a leading think tank in Uganda focused on parliamentary democracy, governance, transparency, accountability, and human rights.",
   keywords: "policy analysis, Uganda, parliamentary democracy, governance, transparency, accountability, human rights, think tank",
   authors: [{ name: "Center for Policy Analysis" }],
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }
+    ]
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "CEPA - Center for Policy Analysis",
     description: "Leading think tank in Uganda focused on policy analysis and governance",
     type: "website",
     locale: "en_UG",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "CEPA Logo"
+      }
+    ]
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "CEPA - Center for Policy Analysis",
+    description: "Leading think tank in Uganda focused on policy analysis and governance",
+    images: ["/android-chrome-512x512.png"]
+  }
 };
 
 export default function RootLayout({

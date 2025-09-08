@@ -220,13 +220,14 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm h-full flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-4">🎯</div>
                   <CardTitle className="text-xl">Our Vision</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col justify-center">
                   <CardDescription className="text-base">
                     To build a democratic society where governance systems and public institutions are transparent, accountable, and responsive to the needs of all citizens.
                   </CardDescription>
@@ -239,13 +240,14 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm h-full flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-4">⚖️</div>
                   <CardTitle className="text-xl">Our Mission</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col justify-center">
                   <CardDescription className="text-base">
                     To shape public policy and strengthen democratic governance by delivering high-quality research, fostering collaboration, and empowering citizens to engage meaningfully with decision-making processes.
                   </CardDescription>
@@ -258,13 +260,14 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm h-full flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-4">🌟</div>
                   <CardTitle className="text-xl">Our Values</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1 flex flex-col justify-center">
                   <CardDescription className="text-base">
                     Integrity, independence, excellence, and commitment to democratic principles guide all our work and interactions.
                   </CardDescription>

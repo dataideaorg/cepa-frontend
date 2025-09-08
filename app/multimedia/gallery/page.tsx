@@ -285,14 +285,6 @@ const Gallery: React.FC = () => {
                   viewport={{ once: true }}
                 >
                   {group.images.map((image, imageIndex) => {
-                    const colorClasses = {
-                      0: "border-primary",
-                      1: "border-secondary", 
-                      2: "border-accent",
-                      3: "border-destructive"
-                    };
-                    const borderColor = colorClasses[imageIndex % 4 as keyof typeof colorClasses];
-                    
                     return (
                       <motion.div
                         key={image.id}
@@ -302,7 +294,7 @@ const Gallery: React.FC = () => {
                         viewport={{ once: true }}
                       >
                         <Card 
-                          className={`relative h-64 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm ${borderColor}`}
+                          className="relative h-64 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm"
                         >
                         <div 
                           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
