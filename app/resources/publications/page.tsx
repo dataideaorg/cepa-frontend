@@ -1,54 +1,123 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { usePublications, useFeaturedPublications } from "@/lib/hooks";
-import LoadingSpinner from "@/app/components/LoadingSpinner";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import Pagination from "@/app/components/Pagination";
-import SearchFilter from "@/app/components/SearchFilter";
 
 const Publications: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filters, setFilters] = useState<Record<string, string>>({});
-  
-  // Fetch featured publications
-  const { data: featuredPublications, loading: featuredLoading, error: featuredError } = useFeaturedPublications();
-  
-  // Fetch all publications with pagination and filters
-  const { data: allPublicationsData, loading: allPublicationsLoading, error: allPublicationsError, refetch } = usePublications({
-    page: currentPage,
-    page_size: 9,
-    search: searchQuery || undefined,
-    ...filters
-  });
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setCurrentPage(1);
-  };
-
-  const handleFilter = (newFilters: Record<string, string>) => {
-    setFilters(newFilters);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  // Get unique types and categories for filter options
-  const types = [
-    "Policy Brief", "Policy Paper", "Research Report", "Analysis"
-  ];
-
-  const categories = [
-    "Governance", "Public Finance", "Transparency", "Civil Society", 
-    "Health", "Education", "Digital Rights", "Road Safety"
+  const publications = [
+    {
+      id: "policy-brief-democratic-governance",
+      title: "Policy Brief: Advancing Democratic Governance: Leveraging Digital Tools for Inclusive Parliamentary Monitoring in Africa and Beyond",
+      type: "Policy Brief",
+      date: "2024",
+      description: "This policy brief explores how digital tools can enhance parliamentary monitoring and democratic governance across Africa, providing recommendations for inclusive and effective oversight mechanisms.",
+      category: "Governance",
+      url: "https://cepa.or.ug/blogs/policy-brief-advancing-democratic-governance-leveraging-digital-tools-for-inclusive-parliamentary-monitoring-in-africa-and-beyond/",
+      pdf: "/publications/policy-brief-democratic-governance.pdf",
+      featured: true
+    },
+    {
+      id: "budget-analysis-2024",
+      title: "Policy Paper: Analyzing the Practicability and Sustainability of Uganda's FY2024-25 Budget: Challenges, Implications and Policy Recommendations",
+      type: "Policy Paper",
+      date: "2024",
+      description: "A comprehensive analysis of Uganda's 2024-25 budget framework, examining its sustainability and providing evidence-based policy recommendations for improved fiscal management.",
+      category: "Public Finance",
+      url: "https://cepa.or.ug/blogs/policy-paper-analyzing-the-practicability-and-sustainability-of-ugandas-fy2024-25-budget-challenges-implications-and-policy-recommendations/",
+      pdf: "/publications/policy-paper-budget-analysis.pdf",
+      featured: true
+    },
+    {
+      id: "access-information-press-freedom",
+      title: "Policy Paper: Strengthening Access to Information and Press Freedom in Uganda: Policy Recommendations for Enhancing Transparency, Accountability and Citizen Participation",
+      type: "Policy Paper",
+      date: "2024",
+      description: "This policy paper examines the current state of access to information and press freedom in Uganda, offering strategic recommendations to enhance transparency and citizen participation in governance.",
+      category: "Transparency",
+      url: "https://cepa.or.ug/blogs/policy-paper-strengthening-access-to-information-and-press-freedom-in-uganda-policy-recommendations-for-enhancing-transparency-accountability-and-citizen-participation/",
+      pdf: "/publications/policy-paper-press-freedom.pdf",
+      featured: true
+    },
+    // {
+    //   id: "ngo-bill-analysis",
+    //   title: "A Brief Analysis of the Non-Governmental Organisations Bill 2015",
+    //   type: "Analysis",
+    //   date: "2015",
+    //   description: "Critical analysis of the NGO Bill 2015, examining its implications for civil society organizations and democratic space in Uganda.",
+    //   category: "Civil Society",
+    //   url: "https://cepa.or.ug/blogs/a-brief-analysis-of-the-non-governmental-organisations-bill-2015/",
+    //   pdf: null,
+    //   featured: false
+    // },
+    // {
+    //   id: "parliamentary-oversight",
+    //   title: "Parliamentary Oversight in Accountability Affects Service Delivery in Public Institutions",
+    //   type: "Research Report",
+    //   date: "2024",
+    //   description: "Investigating the relationship between parliamentary oversight mechanisms and service delivery outcomes in Uganda's public institutions.",
+    //   category: "Accountability",
+    //   url: "https://cepa.or.ug/blogs/parliamentary-oversight-in-accountability-affects-service-delivery-in-public-institutions/",
+    //   pdf: null,
+    //   featured: false
+    // },
+    {
+      id: "data-protection-analysis",
+      title: "Data Protection in the Digital Age: An Analysis of Uganda's Data Protection and Privacy Bill 2015",
+      type: "Analysis",
+      date: "2015",
+      description: "Comprehensive analysis of Uganda's Data Protection and Privacy Bill, examining its provisions and implications for digital rights and privacy protection.",
+      category: "Digital Rights",
+      url: "https://cepa.or.ug/blogs/data-protection-in-the-digital-age-an-analysis-of-ugandas-data-protection-and-privacy-bill-2015/",
+      pdf: null,
+      featured: false
+    },
+    {
+      id: "children-amendment-bill",
+      title: "An Analytical Overview of Uganda's Proposed Children Amendment Bill 2015",
+      type: "Analysis",
+      date: "2015",
+      description: "Detailed analysis of the Children Amendment Bill 2015, focusing on its potential impact on child rights and protection in Uganda.",
+      category: "Human Rights",
+      url: "https://cepa.or.ug/blogs/an-analytical-overview-of-ugandas-proposed-children-amendment-bill-2015/",
+      pdf: "/publications/children-amendment-bill-analysis.pdf",
+      featured: false
+    },
+    // {
+    //   id: "public-finance-management",
+    //   title: "Five Things We Learnt from the Passing of the Public Finance Management Amendment Bill 2015",
+    //   type: "Analysis",
+    //   date: "2015",
+    //   description: "Key insights and lessons learned from the passage of the Public Finance Management Amendment Bill, highlighting its significance for fiscal governance.",
+    //   category: "Public Finance",
+    //   url: "https://cepa.or.ug/blogs/five-things-we-learnt-from-the-passing-of-the-public-finance-management-amendment-bill-2015/",
+    //   pdf: null,
+    //   featured: false
+    // },
+    // {
+    //   id: "parliamentary-pensions",
+    //   title: "Flaws in the Recently Passed Parliamentary Pensions Amendment Bill 2014",
+    //   type: "Analysis",
+    //   date: "2014",
+    //   description: "Critical examination of the Parliamentary Pensions Amendment Bill, identifying key flaws and their implications for legislative accountability.",
+    //   category: "Governance",
+    //   url: "https://cepa.or.ug/blogs/flaws-in-the-recently-passed-parliamentary-pensions-amendment-bill-2014/",
+    //   pdf: null,
+    //   featured: false
+    // },
+    {
+      id: "tobacco-control-bill",
+      title: "Comprehensive Ban on Tobacco Advertising in the Recently Passed Tobacco Control Bill is Within Public Interest",
+      type: "Analysis",
+      date: "2024",
+      description: "Analysis of the Tobacco Control Bill's advertising restrictions, arguing for their alignment with public health interests and constitutional rights.",
+      category: "Public Health",
+      url: "https://cepa.or.ug/blogs/comprehensive-ban-on-tobacco-advertising-in-the-recently-passed-tobbaco-control-bill-is-within-public-interest-and-does-not-infringe-tobacco-companies-intellectual-property-rights/",
+      pdf: "/publications/tobacco-control-bill-analysis.pdf",
+      featured: false
+    }
   ];
 
 
@@ -116,23 +185,14 @@ const Publications: React.FC = () => {
             </p>
           </motion.div>
           
-          {featuredLoading ? (
-            <LoadingSpinner size="lg" className="py-12" />
-          ) : featuredError ? (
-            <ErrorMessage 
-              message={featuredError} 
-              onRetry={() => window.location.reload()} 
-              className="py-12" 
-            />
-          ) : (
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {featuredPublications?.map((publication, index) => (
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {publications.filter(pub => pub.featured).map((publication, index) => (
               <motion.div
                 key={publication.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -170,8 +230,7 @@ const Publications: React.FC = () => {
               </Card>
               </motion.div>
             ))}
-            </motion.div>
-          )}
+          </motion.div>
         </div>
       </section>
 
@@ -193,33 +252,14 @@ const Publications: React.FC = () => {
             </p>
           </motion.div>
           
-          {/* Search and Filter */}
-          <div className="mb-12">
-            <SearchFilter
-              onSearch={handleSearch}
-              onFilter={handleFilter}
-              searchPlaceholder="Search publications..."
-              filterOptions={{
-                type: types,
-                category: categories,
-                featured: true
-              }}
-            />
-          </div>
-
-          {/* Publications Grid */}
-          {allPublicationsLoading ? (
-            <LoadingSpinner size="lg" className="py-12" />
-          ) : allPublicationsError ? (
-            <ErrorMessage 
-              message={allPublicationsError} 
-              onRetry={refetch} 
-              className="py-12" 
-            />
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {allPublicationsData?.results?.map((publication, index) => (
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {publications.map((publication, index) => (
               <motion.div
                 key={publication.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -257,18 +297,7 @@ const Publications: React.FC = () => {
               </Card>
               </motion.div>
             ))}
-              </div>
-
-              {/* Pagination */}
-              {allPublicationsData && allPublicationsData.count > 9 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.ceil(allPublicationsData.count / 9)}
-                  onPageChange={handlePageChange}
-                />
-              )}
-            </>
-          )}
+          </motion.div>
         </div>
       </section>
 

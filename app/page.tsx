@@ -5,13 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { motion } from 'framer-motion';
-import { useHomepageLatest } from '@/lib/hooks';
-import LoadingSpinner from '@/app/components/LoadingSpinner';
-import ErrorMessage from '@/app/components/ErrorMessage';
 
 const Home: React.FC = () => {
-  const { data: latestData, loading: latestLoading, error: latestError } = useHomepageLatest();
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -276,215 +271,303 @@ const Home: React.FC = () => {
               Stay informed with our latest research, publications, and policy insights that shape Uganda's governance landscape.
             </p>
           </motion.div>
-
-          {latestLoading ? (
-            <LoadingSpinner size="lg" className="py-12" />
-          ) : latestError ? (
-            <ErrorMessage 
-              message={latestError} 
-              onRetry={() => window.location.reload()} 
-              className="py-12" 
-            />
-          ) : (
-            <>
           
-              {/* News Section */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold text-foreground">Latest News</h3>
-                  <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
-                    <Link href="/resources/news">View All News</Link>
-                  </Button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {latestData?.featured_news_articles?.slice(0, 3).map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link href={`/resources/news/${item.slug}`}>
-                        <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
-                          <div 
-                            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url(${item.image})` }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-blue-100 text-blue-800 border-blue-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
-                          </div>
-                          <div className="absolute top-4 right-4">
-                            <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
-                            <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
-                          </div>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+          {/* News Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-foreground">Latest News</h3>
+              <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
+                <Link href="/resources/news">View All News</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Ministry of Health Seeks UGX450Bn for Emergency Medical Services",
+                  date: "September 2023",
+                  category: "Health",
+                  description: "The Ministry of Health has revealed that Uganda needs UGX450Bn over 5 years to purchase and operationalize ambulances to reduce road crash deaths.",
+                  image: "/news/health-emergency-services.jpg",
+                  slug: "ministry-of-health-seeks-ugx450bn-for-emergency-medical-services-for-road-crash-victims"
+                },
+                {
+                  title: "World Remembrance Day For Road Traffic Victims Should be a Day to Propel Action",
+                  date: "November 2023",
+                  category: "Road Safety",
+                  description: "As Uganda commemorates World Remembrance Day for Road Traffic Victims, CEPA calls for concrete action to address the growing road safety crisis.",
+                  image: "/news/road-safety-remembrance.jpg",
+                  slug: "world-remembrance-day-for-road-traffic-victims-should-be-a-day-to-propel-action"
+                },
+                {
+                  title: "Financing Safer Roads: CEPA Rallies Stakeholders for Increased Road Safety Investment",
+                  date: "July 2025",
+                  category: "Road Safety",
+                  description: "CEPA convenes key stakeholders to discuss strategies for increasing investment in road safety infrastructure and programs across Uganda.",
+                  image: "/news/financing-safer-roads.jpg",
+                  slug: "financing-safer-roads-cepa-rallies-stakeholders-for-increased-road-safety-investment"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Link href={`/resources/news/${item.slug}`}>
+                    <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-blue-100 text-blue-800 border-blue-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
+                        <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-              {/* Blog Section */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold text-foreground">Latest Analysis</h3>
-                  <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
-                    <Link href="/resources/blog">View All Analysis</Link>
-                  </Button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {latestData?.featured_blog_posts?.slice(0, 3).map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link href={`/resources/blog/${item.slug}`}>
-                        <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
-                          <div 
-                            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url(${item.image})` }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-green-100 text-green-800 border-green-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
-                          </div>
-                          <div className="absolute top-4 right-4">
-                            <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
-                            <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
-                          </div>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+          {/* Blog Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-foreground">Latest Analysis</h3>
+              <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
+                <Link href="/resources/blog">View All Analysis</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Education: Are we doing a good job with our children?",
+                  date: "February 2022",
+                  category: "Education",
+                  description: "An analysis of Uganda's education sector challenges, particularly the impact of COVID-19 lockdowns on learners and the need for increased government investment.",
+                  image: "/blog/education-children.jpg",
+                  slug: "education-are-we-doing-a-good-job-with-our-children"
+                },
+                {
+                  title: "Parliament Approving Decisions for all the Wrong Reasons",
+                  date: "March 2022",
+                  category: "Governance",
+                  description: "A critical examination of parliamentary decision-making processes and the need for more evidence-based policy formulation in Uganda's legislative body.",
+                  image: "/blog/parliament-decisions.jpg",
+                  slug: "parliament-approving-decisions-for-all-the-wrong-reasons"
+                },
+                {
+                  title: "Data Protection in the Digital Age: An Analysis of Uganda's Data Protection and Privacy Bill 2015",
+                  date: "April 2022",
+                  category: "Digital Rights",
+                  description: "Comprehensive analysis of Uganda's proposed data protection legislation and its implications for digital rights, privacy, and cybersecurity.",
+                  image: "/blog/data-protection.jpg",
+                  slug: "data-protection-in-the-digital-age-an-analysis-of-ugandas-data-protection-and-privacy-bill-2015"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Link href={`/resources/blog/${item.slug}`}>
+                    <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-green-100 text-green-800 border-green-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
+                        <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-              {/* Events Section */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold text-foreground">Upcoming Events</h3>
-                  <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
-                    <Link href="/resources/events">View All Events</Link>
-                  </Button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {latestData?.featured_events?.slice(0, 3).map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Link href={`/resources/events/${item.slug}`}>
-                        <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
-                          <div 
-                            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url(${item.image})` }}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                          <div className="absolute top-4 left-4">
-                            <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
-                          </div>
-                          <div className="absolute top-4 right-4">
-                            <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                            <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
-                            <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
-                          </div>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+          {/* Events Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-foreground">Upcoming Events</h3>
+              <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
+                <Link href="/resources/events">View All Events</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Driving Policy into Action: CEPA Co-Convenes the 2025 Uganda Road Safety Conference",
+                  date: "May 14-15, 2025",
+                  category: "Conference",
+                  description: "From 14–15 May 2025, CEPA co-convened the Uganda Road Safety Conference, bringing together policymakers, civil society organizations, and road safety experts.",
+                  image: "/events/road-safety-conference.jpg",
+                  slug: "uganda-road-safety-conference-2025"
+                },
+                {
+                  title: "Championing SRHR through Legislative Engagement: CEPA at the 16th NEAPACOH Meeting in Tanzania",
+                  date: "March 5-8, 2025",
+                  category: "Meeting",
+                  description: "CEPA participated in the 16th NEAPACOH meeting from 5th to 8th March 2025, focusing on sexual and reproductive health rights (SRHR) advocacy.",
+                  image: "/events/neapacoh-meeting.jpg",
+                  slug: "neapacoh-meeting-tanzania-2025"
+                },
+                {
+                  title: "Bridging Borders, Deepening Democracy: CEPA's Experience-Sharing at the Ethiopia Civil Society Engagement Workshop",
+                  date: "November 19, 2024",
+                  category: "Workshop",
+                  description: "CEPA joined regional civil society leaders in Ethiopia for a comprehensive workshop on democratic engagement, policy advocacy, and cross-border collaboration.",
+                  image: "/events/ethiopia-workshop.jpg",
+                  slug: "ethiopia-civil-society-workshop-2024"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Link href={`/resources/events/${item.slug}`}>
+                    <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm cursor-pointer">
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-yellow-100 text-yellow-800 border-yellow-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
+                        <p className="text-sm text-white/90 line-clamp-3">{item.description}</p>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-              {/* Publications Section */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="mb-16"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold text-foreground">Latest Publications</h3>
-                  <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
-                    <Link href="/resources/publications">View All Publications</Link>
-                  </Button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {latestData?.featured_publications?.slice(0, 3).map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
-                        <div 
-                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                          style={{ backgroundImage: `url(${item.image || '/activities/parliamentary-training.jpg'})` }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        <div className="absolute top-4 left-4">
-                          <Badge className="bg-purple-100 text-purple-800 border-purple-200 px-2 py-1 rounded-full text-xs font-medium">{item.type}</Badge>
-                        </div>
-                        <div className="absolute top-4 right-4">
-                          <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
-                          <p className="text-sm text-white/90 line-clamp-3 mb-3">{item.description}</p>
-                          {item.pdf && (
-                            <Link 
-                              href={item.pdf} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="bg-blue-600/20 hover:bg-blue-600/30 text-white border border-blue-600/30 backdrop-blur-sm font-medium py-1 px-3 rounded-md transition-all duration-200 text-xs inline-block"
-                            >
-                              Download PDF
-                            </Link>
-                          )}
-                        </div>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </>
-          )}
+          {/* Publications Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-foreground">Latest Publications</h3>
+              <Button asChild variant="outline" className="bg-blue-600/20 hover:bg-blue-600/30 text-blue-900 border border-blue-600/30 backdrop-blur-sm">
+                <Link href="/resources/publications">View All Publications</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Policy Brief: Advancing Democratic Governance: Leveraging Digital Tools for Inclusive Parliamentary Monitoring",
+                  date: "2024",
+                  category: "Policy Brief",
+                  description: "This policy brief explores how digital tools can enhance parliamentary monitoring and democratic governance across Africa, providing recommendations for inclusive oversight mechanisms.",
+                  image: "/activities/parliamentary-training.jpg",
+                  pdf: "/publications/policy-brief-democratic-governance.pdf",
+                  url: "https://cepa.or.ug/blogs/policy-brief-advancing-democratic-governance-leveraging-digital-tools-for-inclusive-parliamentary-monitoring-in-africa-and-beyond/"
+                },
+                {
+                  title: "Policy Paper: Analyzing the Practicability and Sustainability of Uganda's FY2024-25 Budget",
+                  date: "2024",
+                  category: "Policy Paper",
+                  description: "A comprehensive analysis of Uganda's 2024-25 budget framework, examining its sustainability and providing evidence-based policy recommendations for improved fiscal management.",
+                  image: "/activities/activity1.jpg",
+                  pdf: "/publications/policy-paper-budget-analysis.pdf",
+                  url: "https://cepa.or.ug/blogs/policy-paper-analyzing-the-practicability-and-sustainability-of-ugandas-fy2024-25-budget-challenges-implications-and-policy-recommendations/"
+                },
+                {
+                  title: "Policy Paper: Strengthening Access to Information and Press Freedom in Uganda",
+                  date: "2024",
+                  category: "Policy Paper",
+                  description: "This policy paper examines the current state of access to information and press freedom in Uganda, offering strategic recommendations to enhance transparency and citizen participation.",
+                  image: "/activities/activity3.jpg",
+                  pdf: "/publications/policy-paper-press-freedom.pdf",
+                  url: "https://cepa.or.ug/blogs/policy-paper-strengthening-access-to-information-and-press-freedom-in-uganda-policy-recommendations-for-enhancing-transparency-accountability-and-citizen-participation/"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-purple-100 text-purple-800 border-purple-200 px-2 py-1 rounded-full text-xs font-medium">{item.category}</Badge>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <span className="text-sm text-white font-medium bg-black/30 px-2 py-1 rounded-md">{item.date}</span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-lg font-bold mb-2 line-clamp-2">{item.title}</h3>
+                      <p className="text-sm text-white/90 line-clamp-3 mb-3">{item.description}</p>
+                      <Link 
+                        href={item.pdf} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-blue-600/20 hover:bg-blue-600/30 text-white border border-blue-600/30 backdrop-blur-sm font-medium py-1 px-3 rounded-md transition-all duration-200 text-xs inline-block"
+                      >
+                        Download PDF
+                      </Link>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

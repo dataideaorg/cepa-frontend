@@ -1,50 +1,113 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { useBlogPosts, useFeaturedBlogPosts } from "@/lib/hooks";
-import LoadingSpinner from "@/app/components/LoadingSpinner";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import Pagination from "@/app/components/Pagination";
-import SearchFilter from "@/app/components/SearchFilter";
 
 const Blog: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filters, setFilters] = useState<Record<string, string>>({});
-  
-  // Fetch featured blog posts
-  const { data: featuredPosts, loading: featuredLoading, error: featuredError } = useFeaturedBlogPosts();
-  
-  // Fetch all blog posts with pagination and filters
-  const { data: allPostsData, loading: allPostsLoading, error: allPostsError, refetch } = useBlogPosts({
-    page: currentPage,
-    page_size: 9,
-    search: searchQuery || undefined,
-    ...filters
-  });
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setCurrentPage(1);
-  };
-
-  const handleFilter = (newFilters: Record<string, string>) => {
-    setFilters(newFilters);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  // Get unique categories for filter options
-  const categories = [
-    "Education", "Governance", "Digital Rights", "Road Safety", 
-    "Health", "Youth", "Budget Analysis", "Public Finance"
+  const blogPosts = [
+    {
+      id: "education-are-we-doing-good-job-children",
+      title: "Education: Are we doing a good job with our children?",
+      date: "February 2022",
+      category: "Education",
+      description: "An analysis of Uganda's education sector challenges, particularly the impact of COVID-19 lockdowns on learners and the need for increased government investment in education.",
+      image: "/blog/education-children.jpg",
+      slug: "education-are-we-doing-a-good-job-with-our-children",
+      featured: true
+    },
+    {
+      id: "parliament-approving-decisions-wrong-reasons",
+      title: "Parliament Approving Decisions for all the Wrong Reasons",
+      date: "March 2022",
+      category: "Governance",
+      description: "A critical examination of parliamentary decision-making processes and the need for more evidence-based policy formulation in Uganda's legislative body.",
+      image: "/blog/parliament-decisions.jpg",
+      slug: "parliament-approving-decisions-for-all-the-wrong-reasons",
+      featured: true
+    },
+    {
+      id: "data-protection-digital-age-analysis",
+      title: "Data Protection in the Digital Age: An Analysis of Uganda's Data Protection and Privacy Bill 2015",
+      date: "April 2022",
+      category: "Digital Rights",
+      description: "Comprehensive analysis of Uganda's proposed data protection legislation and its implications for digital rights, privacy, and cybersecurity in the country.",
+      image: "/blog/data-protection.jpg",
+      slug: "data-protection-in-the-digital-age-an-analysis-of-ugandas-data-protection-and-privacy-bill-2015",
+      featured: true
+    },
+    {
+      id: "road-safety-uganda-comprehensive-regulations",
+      title: "Road Safety in Uganda: Why Uganda Needs Comprehensive Regulations for Road Users",
+      date: "May 2022",
+      category: "Road Safety",
+      description: "Analysis of road safety challenges in Uganda and recommendations for comprehensive regulatory framework to reduce traffic accidents and fatalities.",
+      image: "/blog/road-safety-regulations.jpg",
+      slug: "road-safety-in-uganda-why-uganda-needs-comprehensive-regulations-for-road-users",
+      featured: false
+    },
+    {
+      id: "parliamentary-oversight-accountability-service-delivery",
+      title: "Parliamentary Oversight in Accountability Affects Service Delivery in Public Institutions",
+      date: "June 2022",
+      category: "Governance",
+      description: "Examination of how effective parliamentary oversight mechanisms can improve accountability and service delivery in Uganda's public institutions.",
+      image: "/blog/parliamentary-oversight.jpg",
+      slug: "parliamentary-oversight-in-accountability-affects-service-delivery-in-public-institutions",
+      featured: false
+    },
+    {
+      id: "health-sector-resources-properly",
+      title: "Health Sector: We are still not using the little resources allocated properly",
+      date: "July 2022",
+      category: "Health",
+      description: "Critical analysis of resource allocation and utilization in Uganda's health sector, highlighting inefficiencies and recommendations for improvement.",
+      image: "/blog/health-sector-resources.jpg",
+      slug: "health-sector-we-are-still-not-using-the-little-resources-allocated-properly",
+      featured: false
+    },
+    {
+      id: "affirmative-action-youth-misunderstood",
+      title: "Affirmative Action to the Youth was Misunderstood: Can we do better?",
+      date: "August 2022",
+      category: "Youth",
+      description: "Analysis of youth affirmative action policies in Uganda, examining their effectiveness and proposing better approaches to youth empowerment.",
+      image: "/blog/youth-affirmative-action.jpg",
+      slug: "affirmative-action-to-the-youth-was-misunderstood-can-we-do-better",
+      featured: false
+    },
+    {
+      id: "budget-framework-paper-young-peoples-interests",
+      title: "Analysis of the 2020-2021 Budget Framework Paper: Where the Young People's Interests? A Look at ICT and Taxation",
+      date: "September 2022",
+      category: "Budget Analysis",
+      description: "Detailed analysis of Uganda's budget framework paper focusing on youth interests, ICT development, and taxation policies affecting young people.",
+      image: "/blog/budget-framework-youth.jpg",
+      slug: "analysis-of-the-2020-2021-budget-framework-paper-where-the-young-peoples-interests-a-look-at-ict-and-taxation",
+      featured: false
+    },
+    {
+      id: "parliament-needs-change-loans-handling",
+      title: "Parliament Needs to Change its Mode of Loans Handling",
+      date: "October 2022",
+      category: "Public Finance",
+      description: "Analysis of parliamentary oversight of loan approvals and recommendations for improving transparency and accountability in debt management.",
+      image: "/blog/parliament-loans.jpg",
+      slug: "parliament-needs-to-change-its-mode-of-loans-handling",
+      featured: false
+    },
+    {
+      id: "reproductive-health-public-health-concern",
+      title: "Reproductive Health is a Public Health Concern",
+      date: "November 2022",
+      category: "Health",
+      description: "Examination of reproductive health challenges in Uganda and the need for comprehensive policies to address maternal and child health issues.",
+      image: "/blog/reproductive-health.jpg",
+      slug: "reproductive-health-is-a-public-health-concern",
+      featured: false
+    }
   ];
 
   const getCategoryColor = (category: string) => {
@@ -111,17 +174,8 @@ const Blog: React.FC = () => {
             </p>
           </motion.div>
           
-          {featuredLoading ? (
-            <LoadingSpinner size="lg" className="py-12" />
-          ) : featuredError ? (
-            <ErrorMessage 
-              message={featuredError} 
-              onRetry={() => window.location.reload()} 
-              className="py-12" 
-            />
-          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredPosts?.map((post, index) => {
+            {blogPosts.filter(post => post.featured).map((post, index) => {
               const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
               const currentColor = themeColors[index % 4];
               
@@ -151,7 +205,6 @@ const Blog: React.FC = () => {
               );
             })}
           </div>
-          )}
         </div>
       </section>
 
@@ -167,32 +220,8 @@ const Blog: React.FC = () => {
             </p>
           </div>
           
-          {/* Search and Filter */}
-          <div className="mb-12">
-            <SearchFilter
-              onSearch={handleSearch}
-              onFilter={handleFilter}
-              searchPlaceholder="Search blog posts..."
-              filterOptions={{
-                category: categories,
-                featured: true
-              }}
-            />
-          </div>
-
-          {/* Blog Posts Grid */}
-          {allPostsLoading ? (
-            <LoadingSpinner size="lg" className="py-12" />
-          ) : allPostsError ? (
-            <ErrorMessage 
-              message={allPostsError} 
-              onRetry={refetch} 
-              className="py-12" 
-            />
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {allPostsData?.results?.map((post, index) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => {
               const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
               const currentColor = themeColors[index % 4];
               
@@ -222,17 +251,6 @@ const Blog: React.FC = () => {
               );
             })}
           </div>
-
-              {/* Pagination */}
-              {allPostsData && allPostsData.count > 9 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={Math.ceil(allPostsData.count / 9)}
-                  onPageChange={handlePageChange}
-                />
-              )}
-            </>
-          )}
         </div>
       </section>
 

@@ -164,11 +164,11 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
-        <img 
+          <img 
           src={post.image} 
-          alt={post.title}
-          className="w-full h-full object-cover"
-        />
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-4xl mx-auto">
@@ -262,8 +262,8 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
                       <Button asChild size="sm" className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm font-medium py-1 px-3 rounded-md transition-all duration-200">
                         <Link href={`/resources/blog/${relatedPost.id}`}>
                           Read More
-                        </Link>
-                      </Button>
+              </Link>
+            </Button>
                     </div>
                   </div>
                 );
