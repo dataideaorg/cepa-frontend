@@ -1,262 +1,365 @@
-import React from "react";
-import Section from "../components/Section";
-import Card from "../components/Card";
-import Button from "../components/Button";
+"use client";
 
-const GetInvolved: React.FC = () => {
-  const involvementOptions = [
-    {
-      id: "careers",
-      title: "Careers",
-      icon: "💼",
-      description: "Join our team of dedicated professionals working to strengthen governance in Uganda.",
-      opportunities: [
-        { title: "Senior Policy Analyst", type: "Full-time", location: "Kampala" },
-        { title: "Research Associate", type: "Full-time", location: "Kampala" },
-        { title: "Communications Officer", type: "Full-time", location: "Kampala" }
-      ]
-    },
-    {
-      id: "internship",
-      title: "Internship",
-      icon: "🎓",
-      description: "Gain hands-on experience in policy research and governance work through our internship program.",
-      opportunities: [
-        { title: "Policy Research Intern", type: "6 months", location: "Kampala" },
-        { title: "Communications Intern", type: "3 months", location: "Kampala" },
-        { title: "Data Analysis Intern", type: "4 months", location: "Kampala" }
-      ]
-    },
-    {
-      id: "fellowship",
-      title: "Fellowship",
-      icon: "🎖️",
-      description: "Join our fellowship program for experienced professionals looking to contribute to governance research.",
-      opportunities: [
-        { title: "Governance Research Fellow", type: "12 months", location: "Kampala" },
-        { title: "Parliamentary Monitoring Fellow", type: "8 months", location: "Kampala" },
-        { title: "Climate Policy Fellow", type: "10 months", location: "Kampala" }
-      ]
-    },
-    {
-      id: "announcements",
-      title: "Announcements",
-      icon: "📢",
-      description: "Stay updated with our latest opportunities, events, and important announcements.",
-      opportunities: [
-        { title: "New Research Grant Opportunities", date: "December 20, 2024" },
-        { title: "Upcoming Training Programs", date: "December 18, 2024" },
-        { title: "Call for Research Proposals", date: "December 15, 2024" }
-      ]
-    },
-    {
-      id: "contact",
-      title: "Contact Us",
-      icon: "📞",
-      description: "Get in touch with us for inquiries, partnerships, or to learn more about our work.",
-      opportunities: [
-        { title: "General Inquiries", contact: "info@cepa.or.ug" },
-        { title: "Partnership Opportunities", contact: "partnerships@cepa.or.ug" },
-        { title: "Media Inquiries", contact: "media@cepa.or.ug" }
-      ]
-    },
-    {
-      id: "donate",
-      title: "Donate",
-      icon: "💝",
-      description: "Support our mission to strengthen governance and democracy in Uganda through your contribution.",
-      opportunities: [
-        { title: "One-time Donation", amount: "Any amount" },
-        { title: "Monthly Support", amount: "Recurring" },
-        { title: "Corporate Partnership", amount: "Custom" }
-      ]
-    },
-    {
-      id: "membership",
-      title: "Membership",
-      icon: "👥",
-      description: "Become a member of CEPA and join our community of governance advocates and researchers.",
-      opportunities: [
-        { title: "Individual Membership", type: "Annual", benefits: "Access to research, events" },
-        { title: "Institutional Membership", type: "Annual", benefits: "Full access, collaboration" },
-        { title: "Student Membership", type: "Annual", benefits: "Discounted rates, mentorship" }
-      ]
-    }
-  ];
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Users, Briefcase, Mail, Heart, ArrowRight, Bell } from "lucide-react";
 
+export default function GetInvolvedPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Hero Section */}
-      <Section background="blue" className="text-white">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Get Involved
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto">
-            Join us in our mission to strengthen democratic governance, transparency, and accountability in Uganda.
-          </p>
-        </div>
-      </Section>
-
-      {/* Involvement Options */}
-      <Section>
-        <div className="space-y-16">
-          {involvementOptions.map((option, index) => (
-            <div key={option.id} id={option.id} className="scroll-mt-20">
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center mb-6">
-                  <div className="text-5xl mr-4">{option.icon}</div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                    {option.title}
-                  </h2>
-                </div>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  {option.description}
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {option.opportunities.map((opportunity, oppIndex) => (
-                  <Card key={oppIndex} hover className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">{opportunity.title}</h3>
-                    <div className="space-y-2 mb-4">
-                      {opportunity.type && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Type:</span> {opportunity.type}
-                        </p>
-                      )}
-                      {opportunity.location && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Location:</span> {opportunity.location}
-                        </p>
-                      )}
-                      {opportunity.date && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Date:</span> {opportunity.date}
-                        </p>
-                      )}
-                      {opportunity.contact && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Contact:</span> {opportunity.contact}
-                        </p>
-                      )}
-                      {opportunity.amount && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Amount:</span> {opportunity.amount}
-                        </p>
-                      )}
-                      {opportunity.benefits && (
-                        <p className="text-sm text-gray-600">
-                          <span className="font-medium">Benefits:</span> {opportunity.benefits}
-                        </p>
-                      )}
-                    </div>
-                    <Button variant="outline" size="sm" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                      {option.id === 'donate' ? 'Donate Now' : 
-                       option.id === 'contact' ? 'Contact Us' : 
-                       'Learn More'}
-                    </Button>
-                  </Card>
-                ))}
-              </div>
-              
-              <div className="text-center mt-8">
-                <Button variant="primary">
-                  {option.id === 'donate' ? 'Make a Donation' : 
-                   option.id === 'contact' ? 'Get in Touch' : 
-                   `View All ${option.title}`}
+      <section className="relative h-96 overflow-hidden">
+        <img 
+          src="/hero/get-involved-hero.jpg" 
+          alt="Get Involved - CEPA"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8">
+          <div className="max-w-7xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
+            >
+              Get Involved
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-white/90 max-w-3xl mx-auto mb-8"
+            >
+              Join us in strengthening governance and democracy across East Africa. There are many ways to contribute to our mission.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-900 border border-yellow-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
+                >
+                  Explore Opportunities
                 </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="bg-green-500/20 hover:bg-green-500/30 text-green-900 border border-green-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
+                >
+                  Learn More
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Ways to Get Involved Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ways to Get Involved</h2>
+            <p className="text-lg text-gray-600">Choose how you want to contribute to our mission</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6"
+          >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Briefcase className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Career Opportunities</h3>
+                  <p className="text-gray-600 mb-6">
+                    Join our team of dedicated professionals working on governance and policy research.
+                  </p>
+                  <Link href="/get-involved/career">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      View Positions
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Fellowships</h3>
+                  <p className="text-gray-600 mb-6">
+                    Join our fellowship programs and work with leading experts on governance and policy research.
+                  </p>
+                  <Link href="/get-involved/fellowships">
+                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      View Programs
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-yellow-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Membership</h3>
+                  <p className="text-gray-600 mb-6">
+                    Join our community of governance professionals and get access to exclusive resources and networking opportunities.
+                  </p>
+                  <Link href="/get-involved/membership">
+                    <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      Join Now
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Mail className="w-8 h-8 text-red-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Contact Us</h3>
+                  <p className="text-gray-600 mb-6">
+                    Have questions or want to discuss partnership opportunities? We&apos;d love to hear from you.
+                  </p>
+                  <Link href="/get-involved/contact">
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      Get in Touch
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Bell className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Announcements</h3>
+                  <p className="text-gray-600 mb-6">
+                    Stay updated with the latest news, events, and important announcements from CEPA.
+                  </p>
+                  <Link href="/get-involved/announcements">
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      View Updates
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Card className="bg-white/20 border border-white/30 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 h-full">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="w-8 h-8 text-pink-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Donate</h3>
+                  <p className="text-gray-600 mb-6">
+                    Support our mission to strengthen governance and promote democracy across Uganda and East Africa.
+                  </p>
+                  <Link href="/get-involved/donate">
+                    <Button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                      Donate Now
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Get Involved Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Get Involved?</h2>
+            <p className="text-lg text-gray-600">Make a meaningful impact on governance and democracy</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-blue-600">15+</span>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Years of Impact</h3>
+              <p className="text-gray-600">
+                Over 15 years of dedicated work in governance research and policy analysis across East Africa.
+              </p>
+            </motion.div>
 
-      {/* Why Get Involved */}
-      <Section background="gray">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Why Get Involved with CEPA?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join a community of dedicated individuals working to create positive change in Uganda's governance landscape.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              title: "Make an Impact",
-              description: "Contribute to meaningful change in Uganda's governance and policy landscape.",
-              icon: "🎯"
-            },
-            {
-              title: "Professional Growth",
-              description: "Develop your skills in policy research, analysis, and advocacy.",
-              icon: "📈"
-            },
-            {
-              title: "Network Building",
-              description: "Connect with like-minded professionals and experts in governance.",
-              icon: "🤝"
-            },
-            {
-              title: "Learning Opportunities",
-              description: "Access to training, workshops, and research opportunities.",
-              icon: "🎓"
-            }
-          ].map((benefit, index) => (
-            <Card key={index} hover className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
-              <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-              <p className="text-gray-600">{benefit.description}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-green-600">50+</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Research Projects</h3>
+              <p className="text-gray-600">
+                Conducted over 50 research projects that have influenced policy decisions and governance reforms.
+              </p>
+            </motion.div>
 
-      {/* Contact Information */}
-      <Section>
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-            Have questions about getting involved? We're here to help you find the best way to contribute to our mission.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
-              <div className="text-3xl mb-4">📧</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
-              <p className="text-gray-600 mb-4">info@cepa.or.ug</p>
-              <Button variant="outline" size="sm">
-                Send Email
-              </Button>
-            </Card>
-            
-            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
-              <div className="text-3xl mb-4">📞</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
-              <p className="text-gray-600 mb-4">+256 XXX XXX XXX</p>
-              <Button variant="outline" size="sm">
-                Call Now
-              </Button>
-            </Card>
-            
-            <Card className="p-6 text-center bg-white/20 border border-white/30 backdrop-blur-sm">
-              <div className="text-3xl mb-4">📍</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Visit Us</h3>
-              <p className="text-gray-600 mb-4">Kampala, Uganda</p>
-              <Button variant="outline" size="sm">
-                Get Directions
-              </Button>
-            </Card>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl font-bold text-yellow-600">100+</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Partners</h3>
+              <p className="text-gray-600">
+                Collaborated with over 100 organizations, governments, and institutions across the region.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
-      </Section>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-yellow-500 to-green-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-3xl sm:text-4xl font-bold text-white mb-6"
+            >
+              Ready to Make a Difference?
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
+            >
+              Join us in strengthening governance and democracy across East Africa. Your contribution matters.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/get-involved/career">
+                  <Button
+                    size="lg"
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
+                  >
+                    Explore Careers
+                  </Button>
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/get-involved/contact">
+                  <Button
+                    size="lg"
+                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
-};
-
-export default GetInvolved;
+}

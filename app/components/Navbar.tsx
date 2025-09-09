@@ -56,9 +56,8 @@ const Navbar = () => {
       label: 'Get Involved',
       href: '/get-involved',
       dropdown: [
-        { label: 'Careers', href: '/get-involved/careers' },
-        { label: 'Internship', href: '/get-involved/internship' },
-        { label: 'Fellowship', href: '/get-involved/fellowship' },
+        { label: 'Careers & Internships', href: '/get-involved/career' },
+        { label: 'Fellowship', href: '/get-involved/fellowships' },
         { label: 'Announcements', href: '/get-involved/announcements' },
         { label: 'Contact Us', href: '/get-involved/contact' },
         { label: 'Donate', href: '/get-involved/donate' },
@@ -94,9 +93,9 @@ const Navbar = () => {
                         </svg>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-64">
+                    <DropdownMenuContent className="w-64 bg-white/50 border border-white/30 backdrop-blur-sm">
                       {item.dropdown.map((dropdownItem) => (
-                        <DropdownMenuItem key={dropdownItem.label} asChild>
+                        <DropdownMenuItem key={dropdownItem.label} asChild className="hover:bg-white/30">
                           <Link href={dropdownItem.href}>
                             {dropdownItem.label}
                           </Link>
@@ -134,12 +133,12 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {activeDropdown === 'mobile' && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/20 border-t border-white/30 backdrop-blur-sm">
               {menuItems.map((item) => (
                 <div key={item.label}>
                   <Link
                     href={item.href}
-                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors duration-200"
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-white/30 rounded-md transition-colors duration-200"
                     onClick={() => setActiveDropdown(null)}
                   >
                     {item.label}
@@ -150,7 +149,7 @@ const Navbar = () => {
                         <Link
                           key={dropdownItem.label}
                           href={dropdownItem.href}
-                          className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors duration-200"
+                          className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-white/30 rounded-md transition-colors duration-200"
                           onClick={() => setActiveDropdown(null)}
                         >
                           {dropdownItem.label}

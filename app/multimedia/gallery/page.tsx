@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const Gallery: React.FC = () => {
   // Gallery groups from the old site structure
@@ -212,12 +214,22 @@ const Gallery: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-bold text-white mb-8"
+            >
               Gallery
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed"
+            >
               Explore our collection of photos from events, workshops, conferences, and activities that showcase CEPA's work in action.
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
@@ -225,42 +237,65 @@ const Gallery: React.FC = () => {
       {/* Gallery Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Our Photo Gallery
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               A visual journey through CEPA's activities, events, and impact in Uganda's governance and policy landscape.
             </p>
-          </div>
+          </motion.div>
           
           <div className="space-y-16">
             {galleryGroups.map((group, groupIndex) => (
-              <div key={group.id} className="space-y-8">
+              <motion.div 
+                key={group.id} 
+                className="space-y-8"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: groupIndex * 0.2 }}
+                viewport={{ once: true }}
+              >
                 {/* Group Title */}
-                <div className="text-center">
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                     {group.title}
                   </h3>
                   <div className="w-24 h-1 mx-auto bg-gradient-to-r from-primary via-secondary to-accent rounded-full"></div>
-                </div>
+                </motion.div>
 
                 {/* Group Images Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <motion.div 
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
                   {group.images.map((image, imageIndex) => {
-                    const colorClasses = {
-                      0: "border-primary",
-                      1: "border-secondary", 
-                      2: "border-accent",
-                      3: "border-destructive"
-                    };
-                    const borderColor = colorClasses[imageIndex % 4 as keyof typeof colorClasses];
-                    
                     return (
-                      <Card 
-                        key={image.id} 
-                        className={`relative h-64 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm ${borderColor}`}
+                      <motion.div
+                        key={image.id}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: imageIndex * 0.1 }}
+                        viewport={{ once: true }}
                       >
+                        <Card 
+                          className="relative h-64 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm"
+                        >
                         <div 
                           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                           style={{ backgroundImage: `url(${image.src})` }}
@@ -270,10 +305,11 @@ const Gallery: React.FC = () => {
                           <h3 className="text-sm font-semibold mb-1 line-clamp-1">{image.title}</h3>
                         </div>
                       </Card>
+                      </motion.div>
                     );
                   })}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -282,13 +318,31 @@ const Gallery: React.FC = () => {
       {/* Call to Action */}
       <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
             Stay Connected
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
+          >
             Subscribe to our channels to get notified about new multimedia content and stay updated with our latest work.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <Link href="/resources#newsletters">
                 Subscribe to Newsletter
@@ -299,7 +353,7 @@ const Gallery: React.FC = () => {
                 Get Involved
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
