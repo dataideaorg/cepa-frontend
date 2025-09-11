@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const News: React.FC = () => {
@@ -48,7 +48,7 @@ const News: React.FC = () => {
     },
     {
       id: "road-safety-advocacy-continued",
-      title: "Road Safety Advocacy: CEPA's Continued Commitment to Safer Roads",
+      title: "Road Safety Advocacy: CEPA&apos;s Continued Commitment to Safer Roads",
       date: "July 2025",
       category: "Advocacy",
       description: "Ongoing advocacy efforts by CEPA to promote road safety policies and improve transportation infrastructure in Uganda through evidence-based research and stakeholder engagement.",
@@ -61,7 +61,7 @@ const News: React.FC = () => {
       title: "Biotechnology and Biosafety in Uganda: Utility in Transforming the Economy and Health Sector",
       date: "August 2023",
       category: "Health",
-      description: "Analysis of Uganda's biotechnology and biosafety framework and its potential to transform the economy and health sector through innovative scientific solutions.",
+      description: "Analysis of Uganda&apos;s biotechnology and biosafety framework and its potential to transform the economy and health sector through innovative scientific solutions.",
       image: "/news/biotechnology-biosafety.jpg",
       slug: "biotechnology-and-biosafety-in-uganda-utility-in-transforming-the-economy-and-health-sector",
       featured: false
@@ -81,7 +81,7 @@ const News: React.FC = () => {
       title: "National Road Safety Action Plan 2022-2026",
       date: "March 2023",
       category: "Road Safety",
-      description: "Analysis of Uganda's National Road Safety Action Plan 2022-2026 and its implementation strategies to reduce road traffic accidents and improve safety standards.",
+      description: "Analysis of Uganda&apos;s National Road Safety Action Plan 2022-2026 and its implementation strategies to reduce road traffic accidents and improve safety standards.",
       image: "/news/national-road-safety-plan.jpg",
       slug: "national-road-safety-action-plan-2022-2026",
       featured: false
@@ -136,7 +136,7 @@ const News: React.FC = () => {
               News & Updates
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Stay informed with the latest news, updates, and insights from CEPA's work in policy analysis, governance, and advocacy across Uganda.
+              Stay informed with the latest news, updates, and insights from CEPA&apos;s work in policy analysis, governance, and advocacy across Uganda.
             </p>
           </div>
         </div>
@@ -150,15 +150,12 @@ const News: React.FC = () => {
               Featured News
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Latest updates and breaking news from CEPA's advocacy and research work.
+              Latest updates and breaking news from CEPA&apos;s advocacy and research work.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticles.filter(article => article.featured).map((article, index) => {
-              const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-              const currentColor = themeColors[index % 4];
-              
+            {newsArticles.filter(article => article.featured).map((article) => {
               return (
                 <Card key={article.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
@@ -201,10 +198,7 @@ const News: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticles.map((article, index) => {
-              const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-              const currentColor = themeColors[index % 4];
-              
+            {newsArticles.map((article) => {
               return (
                 <Card key={article.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 

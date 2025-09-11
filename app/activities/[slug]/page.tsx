@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
@@ -223,15 +223,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {activity.relatedActivities.map((relatedActivity, index) => {
-                const colorClasses = {
-                  0: "border-primary",
-                  1: "border-secondary", 
-                  2: "border-accent",
-                  3: "border-destructive"
-                };
-                const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
-                
+              {activity.relatedActivities.map((relatedActivity) => {
                 return (
                   <Card key={relatedActivity.id} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div 

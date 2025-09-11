@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 
 const About: React.FC = () => {
   return (
@@ -163,7 +162,7 @@ const About: React.FC = () => {
               What Sets CEPA Apart
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              CEPA distinguishes itself through innovative approaches and collaborative methodologies that drive meaningful change in Uganda's governance landscape.
+              CEPA distinguishes itself through innovative approaches and collaborative methodologies that drive meaningful change in Uganda&apos;s governance landscape.
             </p>
           </div>
           
@@ -207,7 +206,7 @@ const About: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  CEPA combines rigorous research with a deep understanding of Uganda's political economy, enabling it to navigate complex policy landscapes and offer practical solutions.
+                  CEPA combines rigorous research with a deep understanding of Uganda&apos;s political economy, enabling it to navigate complex policy landscapes and offer practical solutions.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -238,14 +237,6 @@ const About: React.FC = () => {
               "Conduct post-legislative scrutiny to assess policy effectiveness",
               "Build capacity of civil society and government institutions"
             ].map((objective, index) => {
-              const colorClasses = {
-                0: "border-primary",
-                1: "border-secondary", 
-                2: "border-accent",
-                3: "border-destructive"
-              };
-              const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
-              
               return (
                 <Card key={index} className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
                   <CardContent className="flex items-start space-x-4 p-0">
@@ -307,7 +298,7 @@ const About: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <Link href="/activities/shaping-ugandas-next-generation-of-policy-leaders-cepa-hosts-youth-mentorship-session-under-uplp" className="font-semibold text-white hover:text-yellow-300 text-lg">
-                  Shaping Uganda's Next Generation of Policy Leaders: CEPA Hosts Youth Mentorship Session under UPLP
+                  Shaping Uganda&apos;s Next Generation of Policy Leaders: CEPA Hosts Youth Mentorship Session under UPLP
                 </Link>
               </div>
             </Card>
@@ -383,14 +374,6 @@ const About: React.FC = () => {
               { src: "/partners/ned.jpeg", alt: "NED Logo" },
               { src: "/partners/afidep.jpg", alt: "AFIDEP Logo" }
             ].map((partner, index) => {
-              const colorClasses = {
-                0: "border-primary",
-                1: "border-secondary", 
-                2: "border-accent",
-                3: "border-destructive"
-              };
-              const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
-              
               return (
                 <Card key={index} className="h-44 flex flex-col items-center justify-center p-6 hover:shadow-md transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                   <img src={partner.src} alt={partner.alt} className="h-16 object-contain max-w-full" />
@@ -409,7 +392,7 @@ const About: React.FC = () => {
               Meet the Team
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our dedicated team of professionals brings together diverse expertise in policy research, governance, and advocacy to drive CEPA's mission forward.
+              Our dedicated team of professionals brings together diverse expertise in policy research, governance, and advocacy to drive CEPA&apos;s mission forward.
             </p>
           </div>
           
@@ -539,7 +522,7 @@ const About: React.FC = () => {
             Join Us in Our Mission
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Whether you're a researcher, policymaker, or concerned citizen, there are many ways to get involved with CEPA's work.
+            Whether you&apos;re a researcher, policymaker, or concerned citizen, there are many ways to get involved with CEPA&apos;s work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">

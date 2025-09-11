@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { 
   Heart, 
   CreditCard, 
@@ -15,14 +13,11 @@ import {
   BookOpen, 
   Shield, 
   Globe,
-  ArrowRight,
-  Check,
   Star,
   Gift
 } from "lucide-react";
 
 export default function DonatePage() {
-  const donationAmounts = [50000, 100000, 250000, 500000, 1000000];
   const impactAreas = [
     {
       icon: Building2,
@@ -51,7 +46,7 @@ export default function DonatePage() {
     {
       icon: Globe,
       title: "Regional Impact",
-      description: "Extend CEPA's influence across East Africa",
+      description: "Extend CEPA&apos;s influence across East Africa",
       impact: "Support regional policy initiatives and cross-border collaboration"
     }
   ];
@@ -211,7 +206,7 @@ export default function DonatePage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Where Your Donation Goes</h2>
-            <p className="text-lg text-gray-600">Support specific areas of CEPA's work</p>
+            <p className="text-lg text-gray-600">Support specific areas of CEPA&apos;s work</p>
           </motion.div>
 
           <motion.div

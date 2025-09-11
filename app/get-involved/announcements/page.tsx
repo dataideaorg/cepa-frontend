@@ -5,10 +5,25 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MapPin, Users, FileText, ExternalLink, ArrowRight, Bell, Megaphone, AlertCircle, Check } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, FileText, ArrowRight, Bell, AlertCircle, Check } from "lucide-react";
+
+interface Announcement {
+  id: number;
+  title: string;
+  type: string;
+  priority: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  content: string;
+  category: string;
+  isNew: boolean;
+  isUrgent: boolean;
+}
 
 export default function AnnouncementsPage() {
-  const announcements = [
+  const announcements: Announcement[] = [
     // {
     //   id: 1,
     //   title: "New Policy Research Fellowship Program Launch",

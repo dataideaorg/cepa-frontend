@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 
 const Home: React.FC = () => {
   return (
@@ -113,7 +112,7 @@ const Home: React.FC = () => {
               Our Focus Areas
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
+              We work across multiple domains to create positive change in Uganda&apos;s governance landscape through evidence-based research and advocacy.
             </p>
           </div>
           
@@ -156,13 +155,6 @@ const Home: React.FC = () => {
                 color: "green"
               }
             ].map((area, index) => {
-              const colorClasses = {
-                blue: "border-primary",
-                yellow: "border-secondary", 
-                green: "border-accent",
-                red: "border-destructive"
-              };
-              
               return (
                 <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
@@ -197,7 +189,7 @@ const Home: React.FC = () => {
               Latest Updates
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Stay informed with our latest research, publications, and policy insights that shape Uganda's governance landscape.
+              Stay informed with our latest research, publications, and policy insights that shape Uganda&apos;s governance landscape.
             </p>
           </div>
           
@@ -225,12 +217,6 @@ const Home: React.FC = () => {
                 color: "green"
               }
             ].map((update, index) => {
-              const colorClasses = {
-                blue: "border-l-4 border-primary bg-blue-50/50",
-                yellow: "border-l-4 border-secondary bg-yellow-50/50",
-                green: "border-l-4 border-accent bg-green-50/50"
-              };
-              
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
                   <CardHeader>

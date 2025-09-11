@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Award, Globe, BookOpen, Calendar, Mail, Check, Star, Crown, ArrowRight, ExternalLink } from "lucide-react";
+import { Users, Award, Globe, BookOpen, Calendar, Check, Star, Crown, ArrowRight } from "lucide-react";
 
 export default function MembershipPage() {
   const membershipTiers = [

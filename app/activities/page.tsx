@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
@@ -24,7 +24,7 @@ const activities = [
   },
   {
     id: 'youth-mentorship',
-    title: 'Shaping Uganda\'s Next Generation of Policy Leaders: CEPA Hosts Youth Mentorship Session under UPLP',
+    title: 'Shaping Uganda&apos;s Next Generation of Policy Leaders: CEPA Hosts Youth Mentorship Session under UPLP',
     date: 'May 24, 2025',
     description: 'CEPA partnered with Lead Impact Hub to host a youth mentorship session under the Uganda Parliamentary Leadership Program, empowering young policy leaders.',
     image: '/activities/activity3.jpg',
@@ -62,14 +62,14 @@ const activities = [
     id: 'road-safety-action-plan',
     title: 'Uganda Launches the National Road Safety Action Plan 2022-2026',
     date: 'March 2025',
-    description: 'CEPA supported the launch of Uganda\'s National Road Safety Action Plan 2022-2026, a comprehensive framework for improving road safety outcomes.',
+    description: 'CEPA supported the launch of Uganda&apos;s National Road Safety Action Plan 2022-2026, a comprehensive framework for improving road safety outcomes.',
     image: '/activities/road-safety-plan.jpg',
     category: 'Road Safety',
     slug: 'uganda-launches-the-national-road-safety-action-plan-2022-2026'
   },
   {
     id: 'parliamentary-oversight',
-    title: 'Enhancing Parliamentary Oversight: CEPA\'s Training on Systematic Reviews',
+    title: 'Enhancing Parliamentary Oversight: CEPA&apos;s Training on Systematic Reviews',
     date: 'February 2025',
     description: 'CEPA conducted training on systematic reviews for parliamentary staff to enhance oversight capabilities and evidence-based decision making.',
     image: '/activities/parliamentary-training.jpg',
@@ -141,7 +141,7 @@ const activities = [
   },
   {
     id: 'alcohol-control',
-    title: 'Legislating for Public Health: CEPA\'s Call for Stronger Alcohol Control Policies at UAPC 2024',
+    title: 'Legislating for Public Health: CEPA&apos;s Call for Stronger Alcohol Control Policies at UAPC 2024',
     date: 'December 2024',
     description: 'CEPA advocated for stronger alcohol control policies at the Uganda Alcohol Policy Conference, emphasizing the need for evidence-based legislation.',
     image: '/activities/alcohol-control.jpg',
@@ -178,7 +178,7 @@ export default function ActivitiesPage() {
               Our Activities
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Explore CEPA's comprehensive range of activities advancing policy analysis, governance, and civic engagement across Uganda and East Africa.
+              Explore CEPA&apos;s comprehensive range of activities advancing policy analysis, governance, and civic engagement across Uganda and East Africa.
             </p>
           </div>
         </div>
@@ -206,15 +206,7 @@ export default function ActivitiesPage() {
 
           {/* Activities Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activities.map((activity, index) => {
-              const colorClasses = {
-                0: "border-primary",
-                1: "border-secondary", 
-                2: "border-accent",
-                3: "border-destructive"
-              };
-              const borderColor = colorClasses[index % 4 as keyof typeof colorClasses];
-              
+            {activities.map((activity) => {
               return (
                 <Card key={activity.id} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 

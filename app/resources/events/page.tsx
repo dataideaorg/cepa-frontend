@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Clock, Users } from "lucide-react";
+import { Calendar, MapPin, Clock } from "lucide-react";
 
 const Events: React.FC = () => {
   const events = [
@@ -35,7 +35,7 @@ const Events: React.FC = () => {
     },
     {
       id: "ethiopia-civil-society-workshop-2024",
-      title: "Bridging Borders, Deepening Democracy: CEPA's Experience-Sharing at the Ethiopia Civil Society Engagement Workshop",
+      title: "Bridging Borders, Deepening Democracy: CEPA&apos;s Experience-Sharing at the Ethiopia Civil Society Engagement Workshop",
       date: "November 19, 2024",
       time: "9:00 AM - 4:00 PM",
       location: "Addis Ababa, Ethiopia",
@@ -66,7 +66,7 @@ const Events: React.FC = () => {
       time: "10:00 AM - 3:00 PM",
       location: "Kampala, Uganda",
       category: "Validation Meeting",
-      description: "In an effort to strengthen the road safety policy framework, CEPA facilitated validation meetings to review and refine speed management regulations for Uganda's road network.",
+      description: "In an effort to strengthen the road safety policy framework, CEPA facilitated validation meetings to review and refine speed management regulations for Uganda&apos;s road network.",
       image: "/events/speed-management-meeting.jpg",
       slug: "speed-management-validation-meetings-2024",
       featured: false,
@@ -168,15 +168,12 @@ const Events: React.FC = () => {
                 Upcoming Events
               </h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                Don't miss these important upcoming events and opportunities to engage with CEPA's work.
+                Don&apos;t miss these important upcoming events and opportunities to engage with CEPA&apos;s work.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event, index) => {
-                const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-                const currentColor = themeColors[index % 4];
-                
+              {upcomingEvents.map((event) => {
                 return (
                   <Card key={event.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div 
@@ -234,7 +231,7 @@ const Events: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pastEvents.map((event, index) => {
+            {pastEvents.map((event) => {
               return (
                 <Card key={event.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
@@ -285,7 +282,7 @@ const Events: React.FC = () => {
             Stay Connected
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-4xl mx-auto">
-            Subscribe to our newsletter to receive updates about upcoming events, workshops, and opportunities to engage with CEPA's work.
+            Subscribe to our newsletter to receive updates about upcoming events, workshops, and opportunities to engage with CEPA&apos;s work.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">

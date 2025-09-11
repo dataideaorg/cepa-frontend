@@ -5,10 +5,27 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Calendar, MapPin, Award, BookOpen, Globe, ArrowRight, ExternalLink } from "lucide-react";
+import { Users, Calendar, MapPin, Award, BookOpen, Globe, ArrowRight } from "lucide-react";
+
+interface FellowshipProgram {
+  id: number;
+  title: string;
+  duration: string;
+  location: string;
+  type: string;
+  description: string;
+  benefits: string[];
+  requirements: string[];
+  applicationDeadline: string;
+  startDate: string;
+  isActive: boolean;
+  isOpen: boolean;
+  maxParticipants: number;
+  currentParticipants: number;
+}
 
 export default function FellowshipsPage() {
-  const fellowshipPrograms = [
+  const fellowshipPrograms: FellowshipProgram[] = [
     // {
     //   id: 1,
     //   title: "Policy Research Fellowship",

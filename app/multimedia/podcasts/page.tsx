@@ -1,16 +1,27 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
+interface Podcast {
+  id: number;
+  title: string;
+  description: string;
+  youtubeId: string;
+  thumbnail: string;
+  duration: string;
+  category: string;
+  date: string;
+  guest: string;
+}
+
 const Podcasts: React.FC = () => {
-  const [selectedPodcast, setSelectedPodcast] = useState<any>(null);
+  const [selectedPodcast, setSelectedPodcast] = useState<Podcast | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openPodcastModal = (podcast: any) => {
+  const openPodcastModal = (podcast: Podcast) => {
     setSelectedPodcast(podcast);
     setIsModalOpen(true);
   };
@@ -42,7 +53,7 @@ const Podcasts: React.FC = () => {
     {
       id: 1,
       title: "UPC: Breaking Feudalism, Building a Republic",
-      description: "A deep dive into Uganda's political history with Joseph Ochieno from UPC, exploring the party's vision for building a modern republic.",
+      description: "A deep dive into Uganda&apos;s political history with Joseph Ochieno from UPC, exploring the party&apos;s vision for building a modern republic.",
       youtubeId: "-hfxM9BFBa4",
       thumbnail: "/videos/UPC-Breaking-Feudalism-Building-a-Republic.png",
       duration: "15:30",
@@ -52,8 +63,8 @@ const Podcasts: React.FC = () => {
     },
     {
       id: 2,
-      title: "Dr. Obote's Common Man's Charter",
-      description: "An insightful analysis of Dr. Milton Obote's Common Man's Charter and its impact on Uganda's development trajectory.",
+      title: "Dr. Obote&apos;s Common Man&apos;s Charter",
+      description: "An insightful analysis of Dr. Milton Obote&apos;s Common Man&apos;s Charter and its impact on Uganda&apos;s development trajectory.",
       youtubeId: "doboz00R5t8",
       thumbnail: "/videos/Dr.-Obotes-Common-Mans-Charter.png",
       duration: "12:45",
@@ -63,8 +74,8 @@ const Podcasts: React.FC = () => {
     },
     {
       id: 3,
-      title: "Building Uganda's Silicon Valley",
-      description: "A comprehensive look at Uganda's tech ecosystem and the potential for creating a thriving innovation hub in East Africa.",
+      title: "Building Uganda&apos;s Silicon Valley",
+      description: "A comprehensive look at Uganda&apos;s tech ecosystem and the potential for creating a thriving innovation hub in East Africa.",
       youtubeId: "aVCnJfWW480",
       thumbnail: "/videos/Building-Ugands-Silicon-Valley.png",
       duration: "18:20",
@@ -74,8 +85,8 @@ const Podcasts: React.FC = () => {
     },
     {
       id: 4,
-      title: "Women's Movement in Uganda: A Legacy of Courage",
-      description: "A powerful conversation with Ms. Akiteng Isabella about the women's movement in Uganda and its lasting impact on society.",
+      title: "Women&apos;s Movement in Uganda: A Legacy of Courage",
+      description: "A powerful conversation with Ms. Akiteng Isabella about the women&apos;s movement in Uganda and its lasting impact on society.",
       youtubeId: "T5lrqFImjeY",
       thumbnail: "/videos/Womens-Movement-in-Uganda-A-Legacy-of-Courage.png",
       duration: "22:15",
@@ -85,8 +96,8 @@ const Podcasts: React.FC = () => {
     },
     {
       id: 5,
-      title: "The Political Economy of UMEME's Exit",
-      description: "An economist from CSBAG discusses the implications of UMEME's exit from Uganda's electricity sector.",
+      title: "The Political Economy of UMEME&apos;s Exit",
+      description: "An economist from CSBAG discusses the implications of UMEME&apos;s exit from Uganda&apos;s electricity sector.",
       youtubeId: "luSlo0n0PO8",
       thumbnail: "/videos/The-Political-Economy-of-UMEMEs-Exit.png",
       duration: "25:30",
@@ -168,7 +179,7 @@ const Podcasts: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed"
             >
-              In-depth conversations with thought leaders, policymakers, and experts shaping Uganda's future
+              In-depth conversations with thought leaders, policymakers, and experts shaping Uganda&apos;s future
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -293,7 +304,7 @@ const Podcasts: React.FC = () => {
             viewport={{ once: true }}
             className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
           >
-            Subscribe to our podcast for the latest policy analysis, expert interviews, and in-depth discussions on Uganda's development journey.
+            Subscribe to our podcast for the latest policy analysis, expert interviews, and in-depth discussions on Uganda&apos;s development journey.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

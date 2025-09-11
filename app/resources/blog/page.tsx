@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const Blog: React.FC = () => {
@@ -11,7 +11,7 @@ const Blog: React.FC = () => {
       title: "Education: Are we doing a good job with our children?",
       date: "February 2022",
       category: "Education",
-      description: "An analysis of Uganda's education sector challenges, particularly the impact of COVID-19 lockdowns on learners and the need for increased government investment in education.",
+      description: "An analysis of Uganda&apos;s education sector challenges, particularly the impact of COVID-19 lockdowns on learners and the need for increased government investment in education.",
       image: "/blog/education-children.jpg",
       slug: "education-are-we-doing-a-good-job-with-our-children",
       featured: true
@@ -21,17 +21,17 @@ const Blog: React.FC = () => {
       title: "Parliament Approving Decisions for all the Wrong Reasons",
       date: "March 2022",
       category: "Governance",
-      description: "A critical examination of parliamentary decision-making processes and the need for more evidence-based policy formulation in Uganda's legislative body.",
+      description: "A critical examination of parliamentary decision-making processes and the need for more evidence-based policy formulation in Uganda&apos;s legislative body.",
       image: "/blog/parliament-decisions.jpg",
       slug: "parliament-approving-decisions-for-all-the-wrong-reasons",
       featured: true
     },
     {
       id: "data-protection-digital-age-analysis",
-      title: "Data Protection in the Digital Age: An Analysis of Uganda's Data Protection and Privacy Bill 2015",
+      title: "Data Protection in the Digital Age: An Analysis of Uganda&apos;s Data Protection and Privacy Bill 2015",
       date: "April 2022",
       category: "Digital Rights",
-      description: "Comprehensive analysis of Uganda's proposed data protection legislation and its implications for digital rights, privacy, and cybersecurity in the country.",
+      description: "Comprehensive analysis of Uganda&apos;s proposed data protection legislation and its implications for digital rights, privacy, and cybersecurity in the country.",
       image: "/blog/data-protection.jpg",
       slug: "data-protection-in-the-digital-age-an-analysis-of-ugandas-data-protection-and-privacy-bill-2015",
       featured: true
@@ -51,7 +51,7 @@ const Blog: React.FC = () => {
       title: "Parliamentary Oversight in Accountability Affects Service Delivery in Public Institutions",
       date: "June 2022",
       category: "Governance",
-      description: "Examination of how effective parliamentary oversight mechanisms can improve accountability and service delivery in Uganda's public institutions.",
+      description: "Examination of how effective parliamentary oversight mechanisms can improve accountability and service delivery in Uganda&apos;s public institutions.",
       image: "/blog/parliamentary-oversight.jpg",
       slug: "parliamentary-oversight-in-accountability-affects-service-delivery-in-public-institutions",
       featured: false
@@ -61,7 +61,7 @@ const Blog: React.FC = () => {
       title: "Health Sector: We are still not using the little resources allocated properly",
       date: "July 2022",
       category: "Health",
-      description: "Critical analysis of resource allocation and utilization in Uganda's health sector, highlighting inefficiencies and recommendations for improvement.",
+      description: "Critical analysis of resource allocation and utilization in Uganda&apos;s health sector, highlighting inefficiencies and recommendations for improvement.",
       image: "/blog/health-sector-resources.jpg",
       slug: "health-sector-we-are-still-not-using-the-little-resources-allocated-properly",
       featured: false
@@ -78,10 +78,10 @@ const Blog: React.FC = () => {
     },
     {
       id: "budget-framework-paper-young-peoples-interests",
-      title: "Analysis of the 2020-2021 Budget Framework Paper: Where the Young People's Interests? A Look at ICT and Taxation",
+      title: "Analysis of the 2020-2021 Budget Framework Paper: Where the Young People&apos;s Interests? A Look at ICT and Taxation",
       date: "September 2022",
       category: "Budget Analysis",
-      description: "Detailed analysis of Uganda's budget framework paper focusing on youth interests, ICT development, and taxation policies affecting young people.",
+      description: "Detailed analysis of Uganda&apos;s budget framework paper focusing on youth interests, ICT development, and taxation policies affecting young people.",
       image: "/blog/budget-framework-youth.jpg",
       slug: "analysis-of-the-2020-2021-budget-framework-paper-where-the-young-peoples-interests-a-look-at-ict-and-taxation",
       featured: false
@@ -152,15 +152,12 @@ const Blog: React.FC = () => {
               Featured Analysis
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Latest policy analysis and expert insights from CEPA's research team.
+              Latest policy analysis and expert insights from CEPA&apos;s research team.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.filter(post => post.featured).map((post, index) => {
-              const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-              const currentColor = themeColors[index % 4];
-              
+            {blogPosts.filter(post => post.featured).map((post) => {
               return (
                 <Card key={post.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 
@@ -203,10 +200,7 @@ const Blog: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => {
-              const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-              const currentColor = themeColors[index % 4];
-              
+            {blogPosts.map((post) => {
               return (
                 <Card key={post.id} className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                   <div 

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Calendar, MapPin, Clock, Users, ExternalLink } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Clock, Users } from "lucide-react";
 
 interface EventDetailPageProps {
   params: {

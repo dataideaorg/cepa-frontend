@@ -168,7 +168,7 @@ const Publications: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {publications.filter(pub => pub.featured).map((publication, index) => (
+            {publications.filter(pub => pub.featured).map((publication) => (
               <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
@@ -215,7 +215,7 @@ const Publications: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {publications.map((publication, index) => (
+            {publications.map((publication) => (
               <Card key={publication.id} className="hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">

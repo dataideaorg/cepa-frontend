@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const Gallery: React.FC = () => {
@@ -228,7 +228,7 @@ const Gallery: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed"
             >
-              Explore our collection of photos from events, workshops, conferences, and activities that showcase CEPA's work in action.
+              Explore our collection of photos from events, workshops, conferences, and activities that showcase CEPA&apos;s work in action.
             </motion.p>
           </div>
         </div>
@@ -248,7 +248,7 @@ const Gallery: React.FC = () => {
               Our Photo Gallery
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              A visual journey through CEPA's activities, events, and impact in Uganda's governance and policy landscape.
+              A visual journey through CEPA&apos;s activities, events, and impact in Uganda&apos;s governance and policy landscape.
             </p>
           </motion.div>
           

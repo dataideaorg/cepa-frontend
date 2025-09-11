@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 const FocusAreas: React.FC = () => {
   const focusAreas = [
@@ -11,7 +10,7 @@ const FocusAreas: React.FC = () => {
       title: "Parliament Watch",
       image: "/focus-areas/parliament-new.jpg",
       description: "Monitoring parliamentary proceedings and ensuring accountability in legislative processes.",
-      details: "We track parliamentary sessions, analyze voting patterns, monitor committee activities, and assess the quality of legislative debates to ensure transparency and accountability in Uganda's parliament.",
+      details: "We track parliamentary sessions, analyze voting patterns, monitor committee activities, and assess the quality of legislative debates to ensure transparency and accountability in Uganda&apos;s parliament.",
       activities: [
         "Real-time monitoring of parliamentary sessions",
         "Analysis of voting patterns and attendance",
@@ -136,7 +135,7 @@ const FocusAreas: React.FC = () => {
               Our Focus Areas
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-              We work across multiple domains to create positive change in Uganda's governance landscape through evidence-based research and advocacy.
+              We work across multiple domains to create positive change in Uganda&apos;s governance landscape through evidence-based research and advocacy.
             </p>
           </div>
         </div>
@@ -147,9 +146,6 @@ const FocusAreas: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">          
           <div className="space-y-16">
             {focusAreas.map((area, index) => {
-              const themeColors = ["border-primary", "border-accent", "border-secondary", "border-destructive"];
-              const currentColor = themeColors[index % 4];
-              
               return (
                 <div key={`${area.id}-details`} id={`${area.id}-details`} className="scroll-mt-20">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

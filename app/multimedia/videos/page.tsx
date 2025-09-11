@@ -3,14 +3,25 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
+interface Video {
+  id: number;
+  title: string;
+  description: string;
+  youtubeId: string;
+  thumbnail: string;
+  duration: string;
+  category: string;
+  date: string;
+}
+
 const Videos: React.FC = () => {
-  const [selectedVideo, setSelectedVideo] = useState<any>(null);
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openVideoModal = (video: any) => {
+  const openVideoModal = (video: Video) => {
     setSelectedVideo(video);
     setIsModalOpen(true);
   };
@@ -43,7 +54,7 @@ const Videos: React.FC = () => {
     {
       id: 1,
       title: "UPC Breaking Feudalism Building a Republic",
-      description: "A discussion on Uganda's political transformation and the role of UPC in building a republic.",
+      description: "A discussion on Uganda&apos;s political transformation and the role of UPC in building a republic.",
       youtubeId: "-hfxM9BFBa4",
       thumbnail: "/videos/UPC-Breaking-Feudalism-Building-a-Republic.png",
       duration: "15:30",
@@ -52,8 +63,8 @@ const Videos: React.FC = () => {
     },
     {
       id: 2,
-      title: "Dr. Obote's Common Man's Charter",
-      description: "Exploring Dr. Obote's vision for Uganda through the Common Man's Charter and its relevance today.",
+      title: "Dr. Obote&apos;s Common Man&apos;s Charter",
+      description: "Exploring Dr. Obote&apos;s vision for Uganda through the Common Man&apos;s Charter and its relevance today.",
       youtubeId: "doboz00R5t8",
       thumbnail: "/videos/Dr.-Obotes-Common-Mans-Charter.png",
       duration: "22:45",
@@ -62,8 +73,8 @@ const Videos: React.FC = () => {
     },
     {
       id: 3,
-      title: "Building Uganda's Silicon Valley",
-      description: "A comprehensive look at Uganda's tech ecosystem and the potential for creating a Silicon Valley in East Africa.",
+      title: "Building Uganda&apos;s Silicon Valley",
+      description: "A comprehensive look at Uganda&apos;s tech ecosystem and the potential for creating a Silicon Valley in East Africa.",
       youtubeId: "aVCnJfWW480",
       thumbnail: "/videos/Building-Ugands-Silicon-Valley.png",
       duration: "18:20",
@@ -73,7 +84,7 @@ const Videos: React.FC = () => {
     {
       id: 4,
       title: "Parliamentary Oversight in Uganda",
-      description: "An analysis of parliamentary oversight mechanisms and their effectiveness in Uganda's governance.",
+      description: "An analysis of parliamentary oversight mechanisms and their effectiveness in Uganda&apos;s governance.",
       youtubeId: "example4",
       thumbnail: "/videos/parliamentary-oversight.jpg",
       duration: "25:15",
@@ -83,7 +94,7 @@ const Videos: React.FC = () => {
     {
       id: 5,
       title: "Road Safety Advocacy in Uganda",
-      description: "CEPA's efforts in advocating for improved road safety policies and implementation in Uganda.",
+      description: "CEPA&apos;s efforts in advocating for improved road safety policies and implementation in Uganda.",
       youtubeId: "example5",
       thumbnail: "/videos/road-safety-advocacy.jpg",
       duration: "12:30",
@@ -93,7 +104,7 @@ const Videos: React.FC = () => {
     {
       id: 6,
       title: "Budget Analysis and Transparency",
-      description: "Understanding Uganda's budget process and the importance of transparency in public finance management.",
+      description: "Understanding Uganda&apos;s budget process and the importance of transparency in public finance management.",
       youtubeId: "example6",
       thumbnail: "/videos/budget-analysis.jpg",
       duration: "20:45",
@@ -130,7 +141,7 @@ const Videos: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed"
             >
-              Watch our collection of videos featuring policy discussions, analysis, and insights on Uganda's governance and development.
+              Watch our collection of videos featuring policy discussions, analysis, and insights on Uganda&apos;s governance and development.
             </motion.p>
           </div>
         </div>
@@ -150,7 +161,7 @@ const Videos: React.FC = () => {
               Our Video Collection
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Explore our video content covering policy analysis, governance discussions, and insights into Uganda's development landscape.
+              Explore our video content covering policy analysis, governance discussions, and insights into Uganda&apos;s development landscape.
             </p>
           </motion.div>
 

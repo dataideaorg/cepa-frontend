@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Section from "../components/Section";
 import Card from "../components/Card";
 import Button from "../components/Button";
@@ -58,7 +57,7 @@ const Multimedia: React.FC = () => {
       {/* Multimedia Content */}
       <Section>
         <div className="space-y-16">
-          {multimediaContent.map((category, index) => (
+          {multimediaContent.map((category) => (
             <div key={category.id} id={category.id} className="scroll-mt-20">
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center mb-6">
@@ -77,7 +76,7 @@ const Multimedia: React.FC = () => {
                   <Card key={itemIndex} hover className="p-6 bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-                        {item.duration || item.type}
+                        {'duration' in item ? item.duration : item.type}
                       </span>
                       <span className="text-sm text-gray-500">{item.date}</span>
                     </div>
@@ -106,7 +105,7 @@ const Multimedia: React.FC = () => {
             Featured Content
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Don't miss our most popular and impactful multimedia content.
+            Don&apos;t miss our most popular and impactful multimedia content.
           </p>
         </div>
         
@@ -120,10 +119,10 @@ const Multimedia: React.FC = () => {
               </div>
             </div>
             <h4 className="text-lg font-semibold text-gray-900 mb-3">
-              "The Future of Democracy in Uganda"
+              &quot;The Future of Democracy in Uganda&quot;
             </h4>
             <p className="text-gray-600 mb-4">
-              An in-depth discussion with leading experts on the challenges and opportunities facing Uganda's democratic institutions.
+              An in-depth discussion with leading experts on the challenges and opportunities facing Uganda&apos;s democratic institutions.
             </p>
             <Button variant="primary" size="sm">
               Listen Now
@@ -139,7 +138,7 @@ const Multimedia: React.FC = () => {
               </div>
             </div>
             <h4 className="text-lg font-semibold text-gray-900 mb-3">
-              "Parliamentary Oversight in Action"
+              &quot;Parliamentary Oversight in Action&quot;
             </h4>
             <p className="text-gray-600 mb-4">
               A comprehensive look at how parliamentary oversight mechanisms work in practice and their impact on governance.
@@ -161,15 +160,11 @@ const Multimedia: React.FC = () => {
             Subscribe to our channels to get notified about new multimedia content and stay updated with our latest work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/resources#newsletters">
-                Subscribe to Newsletter
-              </Link>
+            <Button href="/resources#newsletters" size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
+              Subscribe to Newsletter
             </Button>
-            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/get-involved">
-                Get Involved
-              </Link>
+            <Button href="/get-involved" size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
+              Get Involved
             </Button>
           </div>
         </div>

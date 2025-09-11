@@ -2,10 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Users, Briefcase, GraduationCap, Award, Calendar, ExternalLink, Mail, Bell } from "lucide-react";
+import { Users, Briefcase, GraduationCap, Award, Mail, Bell } from "lucide-react";
 
 const Career: React.FC = () => {
   return (
@@ -54,7 +53,7 @@ const Career: React.FC = () => {
               Why Work With CEPA?
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Be part of a dynamic team that's making a real difference in Uganda's governance and development landscape.
+              Be part of a dynamic team that&apos;s making a real difference in Uganda&apos;s governance and development landscape.
             </p>
           </motion.div>
 
@@ -135,7 +134,7 @@ const Career: React.FC = () => {
               Current Opportunities
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              We're always looking for passionate individuals to join our team.
+              We&apos;re always looking for passionate individuals to join our team.
             </p>
           </motion.div>
 
@@ -152,7 +151,7 @@ const Career: React.FC = () => {
                 No Current Openings
               </h3>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                We don't have any open positions at the moment, but we're always interested in hearing from talented individuals who share our passion for governance and policy research.
+                We don&apos;t have any open positions at the moment, but we&apos;re always interested in hearing from talented individuals who share our passion for governance and policy research.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -230,7 +229,7 @@ const Career: React.FC = () => {
             viewport={{ once: true }}
             className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
           >
-            Even though we don't have open positions right now, we're always interested in connecting with passionate individuals who share our commitment to strengthening governance and democracy in Uganda.
+            Even though we don&apos;t have open positions right now, we&apos;re always interested in connecting with passionate individuals who share our commitment to strengthening governance and democracy in Uganda.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
