@@ -192,12 +192,12 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <Button asChild variant="outline" className="mb-8">
-              <Link href="/resources/blog">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Blog
-              </Link>
-            </Button>
+          <Button asChild variant="outline" className="mb-8 bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
+            <Link href="/resources/blog">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Link>
+          </Button>
           </div>
           
           <article 
@@ -216,7 +216,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
                   Published on {post.date}
                 </span>
               </div>
-              <Button asChild variant="outline">
+              <Button asChild variant="outline" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                 <Link href="/resources/blog">
                   View All Posts
                 </Link>
@@ -236,12 +236,9 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
             {Object.values(blogPosts)
               .filter(p => p.id !== post.id)
               .slice(0, 3)
-              .map((relatedPost, index) => {
-                const themeColors = ["border-primary", "border-secondary", "border-accent", "border-destructive"];
-                const currentColor = themeColors[index % 4];
-                
+              .map((relatedPost) => {
                 return (
-                  <div key={relatedPost.id} className={`relative h-80 overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group border-2 ${currentColor}`}>
+                  <div key={relatedPost.id} className="relative h-80 overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
                     <div 
                       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                       style={{ backgroundImage: `url(${relatedPost.image})` }}
@@ -259,8 +256,8 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
                       <p className="text-sm text-white/90 mb-3">
                         {relatedPost.date}
                       </p>
-                      <Button asChild size="sm" variant="outline" className={`bg-white text-black border-2 ${currentColor} hover:bg-white hover:text-black`}>
-                        <Link href={`/resources/blog/${relatedPost.id}`} className="text-black">
+                      <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
+                        <Link href={`/resources/blog/${relatedPost.id}`}>
                           Read More
                         </Link>
                       </Button>

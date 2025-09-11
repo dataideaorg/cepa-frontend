@@ -54,17 +54,6 @@ const Home: React.FC = () => {
           
           {/* Mission Flow */}
           <div className="relative">
-            {/* Simple Mission Flow */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="flex items-center space-x-8 bg-gradient-to-r from-blue-50 via-yellow-50 to-green-50 rounded-lg px-8 py-4 border border-gray-200">
-                <span className="text-lg font-medium text-primary">Research</span>
-                <span className="text-gray-400">→</span>
-                <span className="text-lg font-medium text-secondary">Monitoring</span>
-                <span className="text-gray-400">→</span>
-                <span className="text-lg font-medium text-accent">Advocacy</span>
-              </div>
-            </div>
-
             {/* Mission Cards - Compact Layout */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-white/20 border border-white/30 backdrop-blur-sm group">
@@ -193,48 +182,253 @@ const Home: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "New Policy Brief Released",
-                description: "Our latest analysis on parliamentary oversight mechanisms in Uganda.",
-                date: "December 2024",
-                type: "Publication",
-                color: "blue"
-              },
-              {
-                title: "Upcoming Event: Governance Forum",
-                description: "Join us for a discussion on strengthening democratic institutions.",
-                date: "January 2025",
-                type: "Event",
-                color: "yellow"
-              },
-              {
-                title: "Annual Report 2024",
-                description: "Comprehensive overview of our work and impact throughout the year.",
-                date: "December 2024",
-                type: "Report",
-                color: "green"
-              }
-            ].map((update, index) => {
-              return (
-                <Card key={index} className="hover:shadow-lg transition-shadow bg-white/20 border border-white/30 backdrop-blur-sm">
-                  <CardHeader>
+          {/* Blog Posts */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">Latest Blog Posts</h3>
+              <Button asChild variant="outline" className="bg-secondary/20 text-secondary border border-secondary/30 hover:bg-secondary/30">
+                <Link href="/resources/blog">View All Blog Posts</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Education: Are we doing a good job with our children?",
+                  date: "February 2022",
+                  category: "Education",
+                  description: "An analysis of Uganda's education sector challenges, particularly the impact of COVID-19 lockdowns on learners.",
+                  image: "/blog/education-children.jpg",
+                  href: "/resources/blog/education-are-we-doing-a-good-job-with-our-children"
+                },
+                {
+                  title: "Parliament Approving Decisions for all the Wrong Reasons",
+                  date: "March 2022",
+                  category: "Governance",
+                  description: "A critical examination of parliamentary decision-making processes and the need for evidence-based policy formulation.",
+                  image: "/blog/parliament-decisions.jpg",
+                  href: "/resources/blog/parliament-approving-decisions-for-all-the-wrong-reasons"
+                },
+                {
+                  title: "Data Protection in the Digital Age",
+                  date: "April 2022",
+                  category: "Digital Rights",
+                  description: "Analysis of Uganda's proposed data protection legislation and its implications for digital rights and privacy.",
+                  image: "/blog/data-protection.jpg",
+                  href: "/resources/blog/data-protection-in-the-digital-age-an-analysis-of-ugandas-data-protection-and-privacy-bill-2015"
+                }
+              ].map((post, index) => (
+                <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${post.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-primary/10 text-primary border-primary text-xs">
+                      {post.category}
+                    </Badge>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-2 line-clamp-2">{post.title}</h4>
+                    <p className="text-sm text-white/90 mb-3">{post.date}</p>
+                    <p className="text-sm text-white/80 mb-4 line-clamp-2">{post.description}</p>
+                    <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
+                      <Link href={post.href}>Read More</Link>
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Events */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">Upcoming Events</h3>
+              <Button asChild variant="outline" className="bg-accent/20 text-accent border border-accent/30 hover:bg-accent/30">
+                <Link href="/resources/events">View All Events</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Driving Policy into Action: CEPA Co-Convenes the 2025 Uganda Road Safety Conference",
+                  date: "May 14-15, 2025",
+                  category: "Conference",
+                  location: "Kampala, Uganda",
+                  description: "Bringing together policymakers, civil society organizations, and road safety experts to discuss innovative approaches.",
+                  image: "/events/road-safety-conference.jpg",
+                  href: "/resources/events/uganda-road-safety-conference-2025"
+                },
+                {
+                  title: "Championing SRHR through Legislative Engagement: CEPA at the 16th NEAPACOH Meeting",
+                  date: "March 5-8, 2025",
+                  category: "Meeting",
+                  location: "Dar es Salaam, Tanzania",
+                  description: "Focusing on sexual and reproductive health rights advocacy and legislative engagement across East and Central Africa.",
+                  image: "/events/neapacoh-meeting.jpg",
+                  href: "/resources/events/neapacoh-meeting-tanzania-2025"
+                },
+                {
+                  title: "Bridging Borders, Deepening Democracy: Ethiopia Civil Society Engagement Workshop",
+                  date: "November 19, 2024",
+                  category: "Workshop",
+                  location: "Addis Ababa, Ethiopia",
+                  description: "Comprehensive workshop on democratic engagement, policy advocacy, and cross-border collaboration in East Africa.",
+                  image: "/events/ethiopia-workshop.jpg",
+                  href: "/resources/events/ethiopia-civil-society-workshop-2024"
+                }
+              ].map((event, index) => (
+                <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${event.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-secondary/10 text-secondary border-secondary text-xs">
+                      {event.category}
+                    </Badge>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-2 line-clamp-2">{event.title}</h4>
+                    <p className="text-sm text-white/90 mb-2">{event.date}</p>
+                    <p className="text-xs text-white/80 mb-3">{event.location}</p>
+                    <p className="text-sm text-white/80 mb-4 line-clamp-2">{event.description}</p>
+                    <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
+                      <Link href={event.href}>Learn More</Link>
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* News */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">Latest News</h3>
+              <Button asChild variant="outline" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+                <Link href="/resources/news">View All News</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Ministry of Health Seeks UGX450Bn for Emergency Medical Services for Road Crash Victims",
+                  date: "September 2023",
+                  category: "Health",
+                  description: "The Ministry of Health reveals Uganda needs UGX450Bn over 5 years to purchase and operationalize ambulances.",
+                  image: "/news/health-emergency-services.jpg",
+                  href: "/resources/news/ministry-of-health-seeks-ugx450bn-for-emergency-medical-services-for-road-crash-victims"
+                },
+                {
+                  title: "World Remembrance Day For Road Traffic Victims Should be a Day to Propel Action",
+                  date: "November 2023",
+                  category: "Road Safety",
+                  description: "CEPA calls for concrete action to address the growing road safety crisis and implement effective measures.",
+                  image: "/news/road-safety-remembrance.jpg",
+                  href: "/resources/news/world-remembrance-day-for-road-traffic-victims-should-be-a-day-to-propel-action"
+                },
+                {
+                  title: "Financing Safer Roads: CEPA Rallies Stakeholders for Increased Road Safety Investment",
+                  date: "July 2025",
+                  category: "Road Safety",
+                  description: "CEPA convenes key stakeholders to discuss strategies for increasing investment in road safety infrastructure.",
+                  image: "/news/financing-safer-roads.jpg",
+                  href: "/resources/news/financing-safer-roads-cepa-rallies-stakeholders-for-increased-road-safety-investment"
+                }
+              ].map((article, index) => (
+                <Card key={index} className="relative h-80 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${article.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-accent/10 text-accent border-accent text-xs">
+                      {article.category}
+                    </Badge>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-2 line-clamp-2">{article.title}</h4>
+                    <p className="text-sm text-white/90 mb-3">{article.date}</p>
+                    <p className="text-sm text-white/80 mb-4 line-clamp-2">{article.description}</p>
+                    <Button asChild size="sm" variant="outline" className="bg-white/20 text-white border border-white/30 hover:bg-white/30">
+                      <Link href={article.href}>Read More</Link>
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Publications */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">Latest Publications</h3>
+              <Button asChild variant="outline" className="bg-destructive/20 text-destructive border border-destructive/30 hover:bg-destructive/30">
+                <Link href="/resources/publications">View All Publications</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Policy Brief: Advancing Democratic Governance: Leveraging Digital Tools for Inclusive Parliamentary Monitoring",
+                  date: "2024",
+                  category: "Governance",
+                  type: "Policy Brief",
+                  description: "Explores how digital tools can enhance parliamentary monitoring and democratic governance across Africa.",
+                  pdf: "/publications/policy-brief-democratic-governance.pdf"
+                },
+                {
+                  title: "Policy Paper: Analyzing the Practicability and Sustainability of Uganda's FY2024-25 Budget",
+                  date: "2024",
+                  category: "Public Finance",
+                  type: "Policy Paper",
+                  description: "Comprehensive analysis of Uganda's 2024-25 budget framework, examining its sustainability.",
+                  pdf: "/publications/policy-paper-budget-analysis.pdf"
+                },
+                {
+                  title: "Policy Paper: Strengthening Access to Information and Press Freedom in Uganda",
+                  date: "2024",
+                  category: "Transparency",
+                  type: "Policy Paper",
+                  description: "Strategic recommendations to enhance transparency and citizen participation in governance.",
+                  pdf: "/publications/policy-paper-press-freedom.pdf"
+                }
+              ].map((publication, index) => (
+                <Card key={index} className="hover:shadow-lg transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm h-80 flex flex-col">
+                  <CardHeader className="flex-shrink-0">
                     <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary" className="font-medium">{update.type}</Badge>
-                      <span className="text-sm text-muted-foreground font-medium">{update.date}</span>
+                      <Badge className="bg-primary/10 text-primary border-primary text-xs">
+                        {publication.category}
+                      </Badge>
+                      <span className="text-sm text-muted-foreground">{publication.date}</span>
                     </div>
-                    <CardTitle className="text-xl text-foreground">{update.title}</CardTitle>
+                    <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors line-clamp-3">
+                      {publication.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm">
+                      {publication.type}
+                    </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base text-muted-foreground">{update.description}</CardDescription>
+                  <CardContent className="flex-grow flex flex-col justify-between">
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                      {publication.description}
+                    </p>
+                    <Button asChild size="sm" variant="secondary" className="w-full bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
+                      <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                        Download PDF
+                      </a>
+                    </Button>
                   </CardContent>
                 </Card>
-              );
-            })}
+              ))}
+            </div>
           </div>
           
-            <div className="text-center mt-12">
+          <div className="text-center">
               <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
                 <Link href="/resources">
                   View All Resources
