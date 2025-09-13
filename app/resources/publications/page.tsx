@@ -248,31 +248,6 @@ const Publications: React.FC = () => {
           </div>
         </div>
       </section>
-
-
-      {/* Call to Action */}
-      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Stay Informed
-          </h2>
-          <p className="text-xl text-white/90 mb-12 max-w-4xl mx-auto">
-            Subscribe to our newsletter to receive the latest publications, research updates, and policy insights directly to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/get-involved#newsletter">
-                Subscribe to Newsletter
-              </Link>
-            </Button>
-            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/resources">
-                Browse All Resources
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
