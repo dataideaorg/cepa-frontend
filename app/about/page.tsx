@@ -528,9 +528,6 @@ const About: React.FC = () => {
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
               <a href="/get-involved">Get Involved</a>
             </Button>
-            <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <a href="/resources">View Our Work</a>
-            </Button>
           </div>
         </div>
       </section>
