@@ -283,53 +283,6 @@ export default function DonatePage() {
           </motion.div>
         </div>
       </section>
-
-      
-      {/* Call to Action Section */}
-      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-          >
-            Ready to Make a Difference?
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
-          >
-            Join thousands of supporters who are helping CEPA strengthen governance and promote democracy across Uganda and East Africa.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-          >
-            <Button
-              size="lg"
-              className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg"
-            >
-              <Heart className="w-5 h-5 mr-2" />
-              Donate Now
-            </Button>
-            <Button
-              size="lg"
-              className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg"
-            >
-              <Users className="w-5 h-5 mr-2" />
-              Become a Partner
-            </Button>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
