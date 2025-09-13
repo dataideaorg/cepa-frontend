@@ -427,14 +427,6 @@ const Home: React.FC = () => {
               ))}
             </div>
           </div>
-          
-          <div className="text-center">
-              <Button asChild size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                <Link href="/resources">
-                  View All Resources
-                </Link>
-              </Button>
-            </div>
         </div>
       </section>
 
@@ -449,12 +441,12 @@ const Home: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/get-involved#donate">
+              <Link href="/get-involved/donate">
                 Donate Now
               </Link>
             </Button>
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/get-involved#careers">
+              <Link href="/get-involved/career">
                 Explore Careers
               </Link>
             </Button>

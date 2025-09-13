@@ -127,20 +127,6 @@ export default function DonatePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button
-                size="lg"
-                className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-900 border border-yellow-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
-              >
-                <Heart className="w-5 h-5 mr-2" />
-                Donate Now
-              </Button>
-              <Button
-                size="lg"
-                className="bg-green-500/20 hover:bg-green-500/30 text-green-900 border border-green-500/30 backdrop-blur-sm font-medium px-8 py-3 rounded-md transition-all duration-200"
-              >
-                <Gift className="w-5 h-5 mr-2" />
-                Become a Partner
-              </Button>
             </motion.div>
           </div>
         </div>
