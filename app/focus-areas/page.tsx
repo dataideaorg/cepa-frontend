@@ -174,7 +174,7 @@ const FocusAreas: React.FC = () => {
                       </div>
                       
                       <Button asChild className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-                        <Link href="/resources">
+                        <Link href="/activities">
                           View Related Resources
                         </Link>
                       </Button>
@@ -217,7 +217,7 @@ const FocusAreas: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button asChild size="lg" className="bg-white/20 text-white border border-white/30 hover:bg-white/30 shadow-lg">
-              <Link href="/resources">
+              <Link href="/resources/publications">
                 View Our Resources
               </Link>
             </Button>
