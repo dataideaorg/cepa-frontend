@@ -233,13 +233,6 @@ export default function ActivitiesPage() {
               );
             })}
           </div>
-
-          {/* Load More Button */}
-          <div className="text-center mt-12">
-            <Button size="lg" className="shadow-lg bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30">
-              Load More Activities
-            </Button>
-          </div>
         </div>
       </section>
     </div>
