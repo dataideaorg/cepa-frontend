@@ -1,73 +1,54 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { FilterDropdown } from "@/components/FilterDropdown";
 import { ContentSectionHeader } from "@/components/ContentSectionHeader";
-
-interface Podcast {
-  id: string;
-  title: string;
-  description: string;
-  youtube_id: string;
-  youtube_embed_url: string;
-  thumbnail?: string;
-  duration?: string;
-  category?: string;
-  date: string;
-  guest?: string;
-  featured: boolean;
-  created_at: string;
-  updated_at: string;
-}
+import { LoadMoreButton } from "@/components/LoadMoreButton";
+import { usePaginatedList } from "@/hooks/use-paginated-list";
+import { PodcastService, Podcast } from "@/lib/podcast-service";
 
 const Podcasts: React.FC = () => {
   const [selectedPodcast, setSelectedPodcast] = useState<Podcast | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  // Fetch data from backend
+  const fetchPage = useCallback(
+    (page: number) =>
+      PodcastService.getPodcastsPage(
+        page,
+        undefined,
+        selectedCategory === "All" ? undefined : selectedCategory
+      ),
+    [selectedCategory]
+  );
+
+  const {
+    items: podcasts,
+    hasMore,
+    loadMore,
+    visibleCount,
+    totalCount,
+    loading,
+    loadingMore,
+    error,
+  } = usePaginatedList({
+    fetchPage,
+    resetKey: selectedCategory,
+  });
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        
-        // Fetch podcasts and categories in parallel
-        const [podcastsResponse, categoriesResponse] = await Promise.all([
-          fetch('https://cepa-backend-production.up.railway.app/multimedia/podcasts/'),
-          fetch('https://cepa-backend-production.up.railway.app/multimedia/podcasts/categories/')
-        ]);
-
-        if (!podcastsResponse.ok || !categoriesResponse.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const podcastsData = await podcastsResponse.json();
-        const categoriesData = await categoriesResponse.json();
-
-        setPodcasts(podcastsData.results || podcastsData);
-        const uniqueCategories = [...new Set(categoriesData.filter((cat: string) => cat))];
-        setCategories(['All', ...uniqueCategories]);
-        setError(null);
-      } catch (err) {
-        console.error('Error fetching podcasts:', err);
-        setError('Failed to load podcasts. Please try again later.');
-        
-        // Fallback data
-        setPodcasts([]);
-        setCategories(['All']);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    PodcastService.getCategories()
+      .then((cats) => {
+        const uniqueCategories = [...new Set(cats.filter((cat: string) => cat))];
+        setCategories(["All", ...uniqueCategories]);
+      })
+      .catch((err) => {
+        console.error("Error fetching podcast categories:", err);
+        setCategories(["All"]);
+      });
   }, []);
 
   const openPodcastModal = (podcast: Podcast) => {
@@ -82,25 +63,21 @@ const Podcasts: React.FC = () => {
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isModalOpen) {
+      if (event.key === "Escape" && isModalOpen) {
         closePodcastModal();
       }
     };
 
     if (isModalOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isModalOpen]);
-
-  const filteredPodcasts = selectedCategory === "All" 
-    ? podcasts 
-    : podcasts.filter(podcast => podcast.category === selectedCategory);
 
   if (loading) {
     return (
@@ -113,7 +90,7 @@ const Podcasts: React.FC = () => {
     );
   }
 
-  if (error) {
+  if (error && podcasts.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -131,7 +108,7 @@ const Podcasts: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
           <div className="max-w-4xl">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -139,108 +116,135 @@ const Podcasts: React.FC = () => {
             >
               Podcasts
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed"
             >
-              In-depth conversations with thought leaders, policymakers, and experts shaping Uganda's future
+              In-depth conversations with thought leaders, policymakers, and experts shaping Uganda&apos;s future
             </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
-            >
-            </motion.div>
           </div>
         </div>
       </div>
 
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ContentSectionHeader
-          title={selectedCategory === "All" ? "All Podcasts" : `${selectedCategory} Podcasts`}
-          description="Listen to conversations with thought leaders, policymakers, and experts shaping Uganda's future."
-          filter={
-            <FilterDropdown
-              label="Category"
-              value={selectedCategory}
-              options={categories}
-              onChange={setSelectedCategory}
-            />
-          }
-        />
-
-        {/* Podcasts Grid */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {filteredPodcasts.map((podcast, index) => (
-            <motion.div
-              key={podcast.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
-              <img
-                src={podcast.thumbnail || `/videos/default-podcast.jpg`}
-                alt={podcast.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/videos/default-podcast.jpg';
-                }}
+          <ContentSectionHeader
+            title={selectedCategory === "All" ? "All Podcasts" : `${selectedCategory} Podcasts`}
+            description="Listen to conversations with thought leaders, policymakers, and experts shaping Uganda's future."
+            filter={
+              <FilterDropdown
+                label="Category"
+                value={selectedCategory}
+                options={categories}
+                onChange={setSelectedCategory}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 cursor-pointer" onClick={() => openPodcastModal(podcast)}>
-                  <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <div className="flex items-center gap-2 mb-2">
-                  {podcast.category && (
-                    <span className="bg-primary/90 text-white px-2 py-1 rounded text-xs">{podcast.category}</span>
-                  )}
-                  {podcast.duration && (
-                    <span className="bg-black/70 text-white px-2 py-1 rounded text-xs">{podcast.duration}</span>
-                  )}
-                </div>
-                <h3 className="text-xl font-bold mb-2 line-clamp-2">{podcast.title}</h3>
-                <p className="text-white/90 text-sm mb-3 line-clamp-2">{podcast.description}</p>
-                {podcast.guest && (
-                  <p className="text-white/80 text-xs mb-2 italic">
-                    <span className="font-semibold">Guest:</span> {podcast.guest}
-                  </p>
-                )}
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-white/70">{new Date(podcast.date).toLocaleDateString()}</span>
-                  <Button size="sm" className="bg-[#800020] text-white border border-[#800020] hover:bg-[#800020]/90 rounded-md px-4 py-2" onClick={() => openPodcastModal(podcast)}>
-                    Play Now
-                  </Button>
-                </div>
-              </div>
-            </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+            }
+          />
+
+          {podcasts.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-xl text-muted-foreground">No podcasts found for this category.</p>
+            </div>
+          ) : (
+            <>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {podcasts.map((podcast, index) => (
+                  <motion.div
+                    key={podcast.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: Math.min(index % 6, 5) * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card className="relative h-96 overflow-hidden hover:shadow-xl transition-all duration-300 group bg-white/20 border border-white/30 backdrop-blur-sm">
+                      <img
+                        src={podcast.thumbnail || `/videos/default-podcast.jpg`}
+                        alt={podcast.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/videos/default-podcast.jpg";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div
+                          className="bg-white/20 backdrop-blur-sm rounded-full p-6 cursor-pointer"
+                          onClick={() => openPodcastModal(podcast)}
+                        >
+                          <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <div className="flex items-center gap-2 mb-2">
+                          {podcast.category && (
+                            <span className="bg-primary/90 text-white px-2 py-1 rounded text-xs">
+                              {podcast.category}
+                            </span>
+                          )}
+                          {podcast.duration && (
+                            <span className="bg-black/70 text-white px-2 py-1 rounded text-xs">
+                              {podcast.duration}
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 line-clamp-2">{podcast.title}</h3>
+                        <p className="text-white/90 text-sm mb-3 line-clamp-2">{podcast.description}</p>
+                        {podcast.guest && (
+                          <p className="text-white/80 text-xs mb-2 italic">
+                            <span className="font-semibold">Guest:</span> {podcast.guest}
+                          </p>
+                        )}
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-white/70">
+                            {new Date(podcast.date).toLocaleDateString()}
+                          </span>
+                          <Button
+                            size="sm"
+                            className="bg-[#800020] text-white border border-[#800020] hover:bg-[#800020]/90 rounded-md px-4 py-2"
+                            onClick={() => openPodcastModal(podcast)}
+                          >
+                            Play Now
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <LoadMoreButton
+                onClick={loadMore}
+                hasMore={hasMore}
+                visibleCount={visibleCount}
+                totalCount={totalCount}
+                loading={loadingMore}
+              />
+            </>
+          )}
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-20" style={{background: 'linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))'}}>
+      <section
+        className="py-20"
+        style={{
+          background:
+            "linear-gradient(to right, rgb(30 64 175), rgb(245 158 11), rgb(16 185 129), rgb(239 68 68))",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -249,16 +253,17 @@ const Podcasts: React.FC = () => {
           >
             Stay Updated with Policy Insights
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
             className="text-xl text-white/90 mb-12 max-w-4xl mx-auto"
           >
-            Subscribe to our podcast for the latest policy analysis, expert interviews, and in-depth discussions on Uganda's development journey.
+            Subscribe to our podcast for the latest policy analysis, expert interviews, and in-depth
+            discussions on Uganda&apos;s development journey.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -277,9 +282,15 @@ const Podcasts: React.FC = () => {
 
       {/* Podcast Modal */}
       {isModalOpen && selectedPodcast && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={closePodcastModal}>
-          <div className="relative w-full max-w-4xl bg-white rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <button 
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={closePodcastModal}
+        >
+          <div
+            className="relative w-full max-w-4xl bg-white rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
               onClick={closePodcastModal}
               className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
             >
@@ -301,7 +312,9 @@ const Podcasts: React.FC = () => {
               <p className="text-muted-foreground mb-4">{selectedPodcast.description}</p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 {selectedPodcast.category && (
-                  <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">{selectedPodcast.category}</span>
+                  <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">
+                    {selectedPodcast.category}
+                  </span>
                 )}
                 {selectedPodcast.duration && <span>{selectedPodcast.duration}</span>}
                 <span>{new Date(selectedPodcast.date).toLocaleDateString()}</span>
