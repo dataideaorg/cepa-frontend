@@ -139,7 +139,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Phone</h3>
-                      <p className="text-gray-600" ><a href="tel:+256393228160">+256 393 228 160</a></p>
+                      <p className="text-gray-600"><a href="tel:0393228160">0393 228 160</a></p>
                     </div>
                   </div>
 
